@@ -5,8 +5,10 @@ date: '2015-08-31'
 slug: prepare-for-future-economic-crises-now
 categories: []
 tags: []
-draft: yes
+draft: 
 ---
+
+*Originally published in the Canberra Times.*
 
 Few policymakers were prepared for the financial crisis of 2007-08. Until it hit, their focus was on more obvious threats to the economy, instead of such an unexpected event. Could this be because planning for unexpected economic events is not the explicit responsibility of any particular policy- maker? If so, this has to change.
 

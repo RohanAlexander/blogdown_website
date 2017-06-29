@@ -5,8 +5,10 @@ date: '2016-01-14'
 slug: notes-and-photos-from-iowa
 categories: []
 tags: []
-draft: yes
+draft: 
 ---
+
+*Sincere thanks to Bec, Callam, Monica, and Owen for reading and improving these notes.*
 
 Bernie Sanders seems quite reasonable for a revolutionary. An energetic man of 74, he spoke for an hour in Perry, Iowa, to a room of 300 from only a few lines of handwritten notes, and then fielded half an hour of questions. He does not have the same aura that surrounded, then, Senator Obama in his own Iowa battle with, then, Senator Clinton in 2008 say those who saw both. Instead, Sanders has preternatural calm. 
 
@@ -65,4 +67,4 @@ There are many aspects of the United States that should not be considered, let a
 
 
 
-Sincere thanks to Bec, Callam, Monica, and Owen for reading and improving these notes.
+

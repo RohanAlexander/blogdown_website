@@ -1,12 +1,14 @@
 ---
 title: Home Buyers Will Be Hurt by Aid Plan
-author: Rohan Alexander
+author: Rohan
 date: '2008-05-08'
 slug: home-buyers-will-be-hurt-by-aid-plan
 categories: []
 tags: []
 draft: 
 ---
+
+*Originally published in the Australian Financial Review.*
 
 The Government's First Home Saver Accounts policy, announced during the last federal election, is a promise that should never have been made. It will place upward pressure upon inflation and increase the potential for domestic financial turbulence. It will be the individuals that the policy is designed to help (young Australians with a still-insecure financial foundation) that will be most hurt in the long-run.
 

@@ -5,9 +5,10 @@ date: '2012-11-28'
 slug: final-shot-at-ending-industrial-disputes
 categories: []
 tags: []
-draft: yes
+draft: 
 ---
 
+*Written with Ben O'Neill and originally published in the Canberra Times.*
 
 The industrial relations disputes that culminated in the shutdown of Qantas last year took more than nine months to make it through arbitration. Such lengthy delays have left many wondering if changes should be made to the processes that underpin this form of dispute resolution. The use of ‘final offer’ arbitration could be the small change that has a big effect, saving conflicted parties time, money and reputation.
 

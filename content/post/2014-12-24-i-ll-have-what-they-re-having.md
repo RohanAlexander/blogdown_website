@@ -5,7 +5,7 @@ date: '2014-12-24'
 slug: i-ll-have-what-they-re-having
 categories: []
 tags: []
-draft: yes
+draft: 
 ---
 
 ![](/img/DSCF5019.jpg)
