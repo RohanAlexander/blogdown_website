@@ -25,7 +25,7 @@ I am employed at Grosvenor to complete a specific project for the European Commi
 
 **Co-founder**, May 2016 -- *Current*
 
-As a co-founder and director of Petit Poll I am responsible for survey design and analysis, as well as marketing and communication. Petit Poll combines non-representative polling data with a hierarchical Bayesian model to cheaply deliver meaningful Australian political polling.
+As a co-founder of Petit Poll I am responsible for survey design and analysis, as well as marketing and communication. Petit Poll combines non-representative polling data with a hierarchical Bayesian model to cheaply deliver meaningful Australian political polling.
 
 
 ## The Centre for International Economics
@@ -43,4 +43,4 @@ As a co-founder and director of GoCampaign (later GoCatalyze), a data analysis t
 ## Reserve Bank of Australia
 **Cadet/Analyst/Senior Analyst**, February 2009 -- December 2011
 
-I conducted research on topics related to banknotes, for example an econometrics-based analysis of banknote demand during the financial crisis. I was also responsible for the creation and analysis of datasets, gave banknote-related presentations to the public, and mentored new staff.
+I conducted research on topics related to banknotes, for example an econometrics-based analysis of banknote demand during the financial crisis. I was also responsible for the creation and analysis of datasets, and gave banknote-related presentations to the public.
