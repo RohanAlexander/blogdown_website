@@ -1,6 +1,6 @@
 baseurl = "https://rohanalexander.com/"  # End your URL with a `/` trailing slash.
 title = "Rohan Alexander"
-copyright = "&copy; 2017 Rohan Alexander"
+copyright = "Thanks to Yihui Xie, Amber Thomas, and Alison Presmanes Hill"
 theme = "hugo-academic"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
@@ -86,7 +86,7 @@ defaultContentLanguageInSubdir = false
 
   # Link custom CSS and JS assets
   #   (relative to /static/css and /static/js respectively)
-  custom_css = []
+  custom_css = ["blue.css"]
   custom_js  = []
 
   # Publication types.
