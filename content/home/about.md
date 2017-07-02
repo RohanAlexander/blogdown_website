@@ -37,7 +37,7 @@ weight = 1
 
 # Biography
 
-I am a PhD student in the Research School of Economics at the Australian National University where I research Australian economic history. As part of my current project with Tim Hatton I create, merge, and analyse census and election datasets from around Federation.
+I am a PhD student in the Research School of Economics at the Australian National University where I research Australian economic history. As part of my current project with Tim Hatton I create, merge, and analyse Federation-era census and election datasets.
 
 I am a co-founder of Petit Poll, which uses statistical methods to produce Australian political polls. And I am a consultant at Grosvenor Management Consulting, where I analyse Australian public-sector procurement.
 

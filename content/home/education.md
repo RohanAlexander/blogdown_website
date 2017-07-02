@@ -37,3 +37,4 @@ Panel: John Tang (primary supervisor), Zach Ward and Martine Mariotti.
 
 **University of Queensland**,   February 2004 -- November 2008
 
+Honours supervisor: Rabee Tourky
