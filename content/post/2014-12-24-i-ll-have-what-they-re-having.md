@@ -8,9 +8,9 @@ tags: []
 draft: 
 ---
 
-![](/img/DSCF5019.jpg)
-
 Some accuse the Rich White Males from San Francisco's Bay Area of only making products for other Rich White Males. But that neglects the fact that what they want is sometimes also what the rest of us want.
+
+![](/img/DSCF5019.jpg)
 
 For instance, in the case of Facebook, Rich White Males wanted an easy way to communicate with their friends and family. Facebook is a success because others want this too. In the case of Uber, a taxi alternative, Rich White Males wanted frictionless transport. It turns out that everyone else (other than taxi medallion owners) wants this too.
 

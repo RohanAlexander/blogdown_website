@@ -12,6 +12,8 @@ draft:
 
 The industrial relations disputes that culminated in the shutdown of Qantas last year took more than nine months to make it through arbitration. Such lengthy delays have left many wondering if changes should be made to the processes that underpin this form of dispute resolution. The use of ‘final offer’ arbitration could be the small change that has a big effect, saving conflicted parties time, money and reputation.
 
+![](/img/_DSC3132.png)
+
 Arbitration is an alternative to a formal litigation. Unless the parties agree otherwise, arbitration is conducted as an adversarial process, but it has looser rules of evidence than standard litigation. An arbitrator, often an experienced lawyer or a highly regarded expert in the field of the dispute, guides the process and makes a binding determination if the parties fail to agree on a solution.
 
 Despite its benefits, the traditional arbitration process encourages par- ties to begin with an extreme position. This is because the parties know that during the process, they are likely to compromise from that position, and unlike in a formal litigation, it is unlikely they will suffer cost penalties for making spurious claims or arguments.

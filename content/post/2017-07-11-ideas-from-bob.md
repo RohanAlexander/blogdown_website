@@ -5,7 +5,7 @@ date: '2017-07-11'
 slug: ideas-from-bob
 categories: []
 tags: []
-draft: yes
+draft: 
 ---
 
 Some possible research ideas in economic history from Bob Gregory (written on a napkin over lunch):
