@@ -6,7 +6,7 @@ slug: weekly-update
 categories:
   - Update
 tags: []
-draft: 
+draft: yes
 ---
 
 In the past week I have scraped all the data for the 1901 census that had been digitised by the HCCDA. I started tidying it, but there is a lot to do.

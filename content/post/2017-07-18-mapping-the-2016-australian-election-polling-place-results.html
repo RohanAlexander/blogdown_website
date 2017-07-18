@@ -1,0 +1,141 @@
+---
+title: Mapping the 2016 Australian election polling place results
+author: Rohan
+date: '2017-07-18'
+slug: mapping-the-2016-australian-election-polling-place-results
+categories: []
+tags: []
+draft: no
+---
+
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>In 2016 Australia’s federal government was determined by the outcomes of elections in 150 divisions which each elected one member to the lower house. The Liberal/National Coalition won 76 seats which allowed it to form a majority government; while the Labor party won 69 seats to form the Opposition; the Greens and the Nick Xenophon Team each won one seat; and there were two Independent members (Andrew Wilkie and Cathy McGowan).</p>
+<p>Votes are cast at polling places in each division. In general voters can go to any polling place within their registered division, but some polling places that are close to a boundary will allow voting from there and some major polling places (such as the city hall of a state capital) will allow voting in any division.</p>
+<p>Although there are some exceptions divisions are generally constructed so that they each have roughly the same number of people. However this is not the case for polling places – some are much larger than others. Nonetheless it is interesting to see the geographic distribution of which party received the most first-preference votes in each polling place, especially in the context of which party won the division.</p>
+<p>The map of all this data is below and the note that follows details the process of downloading and merging first-preference votes by polling place, and then plotting it on an interactive map.</p>
+<iframe src="https://rohanalexander.shinyapps.io/polling_place_firstpref_winner/?showcase=0" width="672" height="700px">
+</iframe>
+</div>
+<div id="polling-place-data" class="section level1">
+<h1>Polling place data</h1>
+<p>The main packages for the data manipulation are the tidyverse and magrittr. leaflet allows the creation of interactive maps, ggmap creates static maps, and rgdal assists with dealing with geographic data. rmapshaper is used to reduce the size of the shapefile of division boundaries so that it is faster to load.</p>
+<pre class="r"><code>library(tidyverse)
+library(magrittr)
+library(leaflet)
+library(ggmap)
+library(rgdal)
+library(rmapshaper)</code></pre>
+<p>The polling place results can be downloaded by state from the AEC website at <a href="http://results.aec.gov.au/20499/Website/HouseDownloadsMenu-20499-Csv.htm" class="uri">http://results.aec.gov.au/20499/Website/HouseDownloadsMenu-20499-Csv.htm</a>. There the AEC also makes available a dataset that contains geocodes for each of the polling places. The separate datasets for each state need to be merged, and then each polling place needs to be geocoded. Finally some minor changes are needed to make the party names easier to follow.</p>
+<pre class="r"><code>#### Read in the polling place datasets (are state specific), and the geocodes for each polling place. Then put it all together to have one geocoded polling place dataset for all of Australia: Australia_booths. Finally, create a dataset that is filtered so that it just shows the winner of each booth: Australia_booths_winner. ####
+# Data importing
+geocodes &lt;- read_csv(&quot;data/GeneralPollingPlacesDownload-20499.csv&quot;, skip = 1)
+NSW_booths &lt;- read_csv(&quot;data/HouseStateFirstPrefsByPollingPlaceDownload-20499-NSW.csv&quot;, skip = 1)
+QLD_booths &lt;- read_csv(&quot;data/HouseStateFirstPrefsByPollingPlaceDownload-20499-QLD.csv&quot;, skip = 1)
+VIC_booths &lt;- read_csv(&quot;data/HouseStateFirstPrefsByPollingPlaceDownload-20499-VIC.csv&quot;, skip = 1)
+ACT_booths &lt;- read_csv(&quot;data/HouseStateFirstPrefsByPollingPlaceDownload-20499-ACT.csv&quot;, skip = 1)
+TAS_booths &lt;- read_csv(&quot;data/HouseStateFirstPrefsByPollingPlaceDownload-20499-TAS.csv&quot;, skip = 1)
+SA_booths &lt;- read_csv(&quot;data/HouseStateFirstPrefsByPollingPlaceDownload-20499-SA.csv&quot;, skip = 1)
+WA_booths &lt;- read_csv(&quot;data/HouseStateFirstPrefsByPollingPlaceDownload-20499-WA.csv&quot;, skip = 1)
+NT_booths &lt;- read_csv(&quot;data/HouseStateFirstPrefsByPollingPlaceDownload-20499-NT.csv&quot;, skip = 1)
+# Merge
+Australia_booths &lt;- rbind(NSW_booths, QLD_booths, VIC_booths, ACT_booths, TAS_booths, SA_booths, WA_booths, NT_booths)
+# Add the geocodes
+Australia_booths &lt;- Australia_booths %&gt;% 
+  left_join(geocodes)
+# Clean up
+rm(NSW_booths, QLD_booths, VIC_booths, ACT_booths, TAS_booths, SA_booths, WA_booths, NT_booths)
+# If you need it use this to get a list of the parties, ordered by the number of first-preference votes
+# first_votes &lt;- Australia_booths %&gt;%
+#   group_by(PartyNm) %&gt;%
+#   summarise(votes = sum(OrdinaryVotes, na.rm = TRUE)) %&gt;%
+#   arrange(desc(votes))
+# Combine some parties that are separate, but equivalent: Australian Labor Party &amp; Australian Labor Party (Northern Territory) Branch &amp; Labor, Country Liberals (NT) &amp; Liberal, The Greens &amp; The Greens (WA).
+Australia_booths$PartyNm &lt;- recode(Australia_booths$PartyNm, &quot;Australian Labor Party (Northern Territory) Branch&quot; = &quot;Australian Labor Party&quot;, &quot;Labor&quot; = &quot;Australian Labor Party&quot;)
+Australia_booths$PartyNm &lt;- recode(Australia_booths$PartyNm, &quot;Country Liberals (NT)&quot; = &quot;Liberal/LNP&quot;, &quot;Liberal National Party of Queensland&quot; = &quot;Liberal/LNP&quot;, &quot;Liberal&quot; = &quot;Liberal/LNP&quot;)
+Australia_booths$PartyNm &lt;- recode(Australia_booths$PartyNm, &quot;The Greens (WA)&quot; = &quot;The Greens&quot;)
+# Create an indicator for who won the polling place then filter on that
+Australia_booths_winner &lt;- Australia_booths %&gt;% 
+  group_by(PollingPlaceID) %&gt;% 
+  mutate(polling_place_winner = ifelse(max(OrdinaryVotes) == OrdinaryVotes, max(OrdinaryVotes), 0)) %&gt;%
+  filter(polling_place_winner &gt;= 1)
+#table(Australia_booths_winner$PartyNm)
+# There are three parties that only win one booth, so combine all those into &#39;Other&#39;
+Australia_booths_winner$PartyNm &lt;- recode(Australia_booths_winner$PartyNm, &quot;Australian Recreational Fishers Party&quot; = &quot;Other&quot;, &quot;Christian Democratic Party (Fred Nile Group)&quot; = &quot;Other&quot;, &quot;Derryn Hinch&#39;s Justice Party&quot; = &quot;Other&quot;)</code></pre>
+</div>
+<div id="division-data" class="section level1">
+<h1>Division data</h1>
+<p>The divisions can be coloured based on which party won overall. The map of the boundaries for each division can be downloaded from the AEC website here: <a href="http://www.aec.gov.au/Electorates/gis/gis_datadownload.htm" class="uri">http://www.aec.gov.au/Electorates/gis/gis_datadownload.htm</a>. The shapefile doesn’t have winner of each division so this needs to be merged into it. It is important to put the shapefile dataset first when merging. Finally, the shapefile is quite a large file and this can be reduced for faster loading.</p>
+<pre class="r"><code>#### Read in the shapefiles (maps) that show each of the boundaries of the divisions (electorates) then add the data to say who won that division. Result is a spatial dataframe called boundaries. ####
+# Overall winner for each division, which will be used to color the division
+Division_winner &lt;- read_csv(&quot;data/HouseMembersElectedDownload-20499.csv&quot;, skip = 1)
+# The boundaries of the divisions (downloaded from: http://www.aec.gov.au/Electorates/gis/gis_datadownload.htm)
+boundaries &lt;- readOGR(dsn = &quot;data/national-midmif-09052016/COM_ELB.TAB&quot;, layer = &quot;COM_ELB&quot;)
+# Fix a couple - Mcmillan and Mcpherson - that have capitalisation issues
+boundaries$Elect_div &lt;- recode(boundaries$Elect_div, &quot;Mcmillan&quot; = &quot;McMillan&quot;, &quot;Mcpherson&quot; = &quot;McPherson&quot;)
+# Add the overall division winner dataset into the boundaries dataset (thanks to http://www.nickeubank.com/wp-content/uploads/2015/10/RGIS2_MergingSpatialData_part1_Joins.html)
+boundaries &lt;- merge(boundaries, Division_winner, by.x = &quot;Elect_div&quot;, by.y = &quot;DivisionNm&quot;)
+# Simplify and reduce the size of the shapefile so that it loads better
+object.size(boundaries)
+boundaries &lt;- rmapshaper::ms_simplify(boundaries)
+object.size(boundaries)
+# Clean up
+rm(Division_winner)</code></pre>
+<p>Then colours need to be associated with each party.</p>
+<pre class="r"><code>#### Specify the colour schemes that will be used. ####
+# Set the color scheme for the booth coloring
+# pal &lt;- colorFactor(
+#   palette = &quot;Dark2&quot;, 
+#   domain = unique(Australia_booths$PartyNm)
+pal &lt;- colorFactor(palette = c(&quot;#c04745&quot;, &quot;#616161&quot;, &quot;black&quot;, &quot;purple4&quot;, &quot;#4776be&quot;, &quot;#ff5800&quot;, &quot;cyan1&quot;, &quot;yellow&quot;, &quot;#a8c832&quot;, &quot;brown4&quot;), 
+                          domain = c(&quot;Australian Labor Party&quot;, &quot;Independent&quot;, &quot;Informal&quot;, &quot;Katter&#39;s Australian Party&quot;, &quot;Liberal/LNP&quot;, &quot;Nick Xenophon Team&quot;, &quot;Other&quot;, &quot;Pauline Hanson&#39;s One Nation&quot;, &quot;The Greens&quot;, &quot;The Nationals&quot;))
+# Set the color scheme for the division coloring
+pall &lt;- colorFactor(palette = c(&quot;#c04745&quot;, &quot;#616161&quot;, &quot;purple4&quot;, &quot;#4776be&quot;, &quot;#4776be&quot;, &quot;#ff5800&quot;, &quot;#a8c832&quot;, &quot;brown4&quot;), 
+                   domain = c(&quot;Australian Labor Party&quot;, &quot;Independent&quot;, &quot;Katter&#39;s Australian Party&quot;, &quot;Liberal&quot;, &quot;Liberal National Party&quot;, &quot;Nick Xenophon Team&quot;, &quot;The Greens&quot;, &quot;The Nationals&quot;))</code></pre>
+</div>
+<div id="interactive-map" class="section level1">
+<h1>Interactive map</h1>
+<p>Finally, the map can be produced:</p>
+<pre class="r"><code>#### Pull it all together to make the map ####
+# Make the map
+Australia_map &lt;- 
+  leaflet() %&gt;%
+  # Base groups
+  addTiles() %&gt;%  # Add default OpenStreetMap map tiles
+  addProviderTiles(providers$Stamen.TonerLite, group = &quot;Toner Lite&quot;) %&gt;% # Add a black and white alternative
+  setView(lng = 133.7751, lat = -25.2744, zoom = 4) %&gt;% # Specify where the map is initially focused
+  addPolygons(data = boundaries, 
+              color = &quot;#444444&quot;, 
+              weight = 1, 
+              smoothFactor = 0.5,
+              opacity = 1.0, 
+              fillColor = pall(boundaries$PartyNm),
+              highlightOptions = highlightOptions(color = &quot;#666&quot;, weight = 2, bringToFront = FALSE)) %&gt;% # Add the plot of the divisions, coloured by which party won it
+  addCircles(
+    data = Australia_booths_winner,
+    lng = Australia_booths_winner$Longitude, 
+    lat = Australia_booths_winner$Latitude, 
+    popup = paste(&quot;&lt;b&gt;Division:&lt;/b&gt;&quot;, as.character(Australia_booths_winner$DivisionNm), &quot;&lt;br&gt;&quot;,
+                  &quot;&lt;b&gt;Polling place:&lt;/b&gt;&quot;, as.character(Australia_booths_winner$PollingPlaceNm), &quot;&lt;br&gt;&quot;,
+                  &quot;&lt;b&gt;Address:&lt;/b&gt;&quot;, as.character(Australia_booths_winner$PremisesAddress1), &quot;&lt;br&gt;&quot;,
+                  &quot;&lt;b&gt;Party with most first-pref votes:&lt;/b&gt;&quot;, as.character(Australia_booths_winner$PartyNm), &quot;&lt;br&gt;&quot;,
+                  &quot;&lt;b&gt;First-pref votes:&lt;/b&gt;&quot;, as.character(Australia_booths_winner$OrdinaryVotes), &quot;&lt;br&gt;&quot;),
+    label = ~as.character(Australia_booths_winner$DivisionNm),
+    #clusterOptions = markerClusterOptions(),
+    color = pal(Australia_booths_winner$PartyNm),
+    fillOpacity = 0.5) %&gt;% # Plot the booths, coloured by which party got the most first-preferences.
+  # Layers control
+  addLayersControl(
+    baseGroups = c(&quot;OSM (default)&quot;, &quot;Toner Lite&quot;),
+    options = layersControlOptions(collapsed = FALSE)
+  ) %&gt;%
+  addLegend(&quot;bottomright&quot;, pal = pal, values = Australia_booths_winner$PartyNm,
+            title = &quot;Which party won&quot;,
+            #labFormat = labelFormat(prefix = &quot;$&quot;),
+            opacity = 1
+  )
+# Call the map
+Australia_map</code></pre>
+</div>
