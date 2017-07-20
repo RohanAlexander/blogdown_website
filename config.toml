@@ -26,7 +26,7 @@ defaultContentLanguageInSubdir = false
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "portrait.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "rohan.alexander@anu.edu.au"
-  address = ""
+  address = "Room 2021, HW Arndt Bld (25A), Australian National University"
   office_hours = ""
   phone = ""
   skype = ""
@@ -154,10 +154,10 @@ defaultContentLanguageInSubdir = false
   url = "#about"
   weight = 1
 
-[[menu.main]]
-  name = "Education"
-  url = "#education"
-  weight = 2
+# [[menu.main]]
+#   name = "Education"
+#   url = "#education"
+#   weight = 2
 
 #[[menu.main]]
 #  name = "Publications"

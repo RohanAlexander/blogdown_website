@@ -22,20 +22,19 @@ knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
 ```
 
-# Introduction
+```{r, echo=FALSE}
+knitr::include_app("https://rohanalexander.shinyapps.io/polling_place_firstpref_winner/", 
+  height = "700px")
+```
 
+The note that follows introduces Australia's political system, and then details the process of downloading and merging first-preference votes by polling place, and then plotting it on an interactive map.
+
+# Australia's political system
 In 2016 Australia's federal government was determined by the outcomes of elections in 150 divisions which each elected one member to the lower house. The Liberal/National Coalition won 76 seats which allowed it to form a majority government; while the Labor party won 69 seats to form the Opposition; the Greens and the Nick Xenophon Team each won one seat; and there were two Independent members (Andrew Wilkie and Cathy McGowan).
 
 Votes are cast at polling places in each division. In general voters can go to any polling place within their registered division, but some polling places that are close to a boundary will allow voting from there and some major polling places (such as the city hall of a state capital) will allow voting in any division. 
 
 Although there are some exceptions divisions are generally constructed so that they each have roughly the same number of people. However this is not the case for polling places -- some are much larger than others. Nonetheless it is interesting to see the geographic distribution of which party received the most first-preference votes in each polling place, especially in the context of which party won the division.
-
-The map of all this data is below and the note that follows details the process of downloading and merging first-preference votes by polling place, and then plotting it on an interactive map.
-
-```{r, echo=FALSE}
-knitr::include_app("https://rohanalexander.shinyapps.io/polling_place_firstpref_winner/", 
-  height = "700px")
-```
 
 
 # Polling place data
