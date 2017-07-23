@@ -39,9 +39,13 @@ devtools::install_github("rstudio/blogdown")
 This section follows Alison Presmanes Hill's [post]( https://apreshill.rbind.io/post/up-and-running-with-blogdown/) closely. Go there for more information.
 
 ## GitHub
-It will be easier to put your website on the internet if you have a GitHub account. This follows  To create a GitHub account, go to https://github.com/ and sign-up for a free account. This restricts you to making everything public, but as we are using GitHub for a public website that's fine.
+It will be easier to put your website on the internet if you have a GitHub account. To create a GitHub account, go to https://github.com/ and sign-up for a free account. This restricts you to making everything public, but as we are using GitHub for a public website that's fine. Once you have an account, create a new repository by clicking on the plus and call it 'my_website'.
 
-Once you have an account, create a new repository called 'my_website'. Don't include a readme or gitignore. Go to this new repository and then 'Clone or download' and copy the website.
+![](/img/blogdown_github_1.png)
+
+Don't worry about including a readme or gitignore. Once you get to the 'Quick setup' page, copy the website address.
+
+![](/img/blogdown_github_2.png)
 
 ## Terminal
 Open Terminal (either <tt>cmd + space</tt> then search for 'Terminal' or find it in your Applications). Use a combination of typing <tt>ls</tt> followed by 'return' and typing <tt>cd</tt> followed by 'return', to navigate to your 'Documents' folder. This is where your website will live for now. 
@@ -56,9 +60,9 @@ Open R Studio and install Hugo via the blogdown package with the following code:
 blogdown::install_hugo()
 ```
 
-In R Studio create a new project in the folder that you just created 'my_website': <tt>File -> New Project -> Existing Directory</tt>. This will open a new R Studio session. Creating a project just adds a .proj file in the folder that makes it easier to come back to your website later.
+In R Studio create a new project in the folder that you just created 'my_website'. To do this click on: <tt>File -> New Project -> Existing Directory</tt>. Then navigate to the folder 'my_website'. This will open a new R Studio session. Creating a project just adds a .proj file in the folder that makes it easier to come back to your website later.
 
-Once that new R Studio sessions create your website using the Academic theme with the following code:
+Using that new R Studio session create your website with the following code:
 ```{r, eval=FALSE}
 blogdown::new_site(theme = "gcushen/hugo-academic", theme_example = TRUE)
 ```
@@ -79,7 +83,7 @@ At this point, the default website is being 'served' locally. This means that ch
 The first change to make is to update the headshot. In your folder, go to my_website -> static -> img. Replace 'portrait.jpg' with your own square headshot jpg. If you do this correctly then when you go back to your website the image will have updated.
 
 ### Personal details, contacts, and main menu
-To update the biography and other details in that first pane, go to <tt>my_website -> config.toml</tt>. This file will either open in a text editor or in R Studio -- it doesn't matter which. When you save the file the changes will be reflected in the website.
+To update the biography and other details in that first pane, go to <tt>File -> Open File</tt> in the R Studio menu and open <tt>config.toml</tt> which is in <tt>my_website -> config.toml</tt>. This file will either open in a text editor or in R Studio -- it doesn't matter which. When you save the file the changes will be reflected in the website.
 
 Search for 'title' or go to line 2. It should say:
 ```{r, eval=FALSE}
@@ -91,7 +95,7 @@ Change that to:
 'title = "Your Name"'
 ```
 
-Search for '[params]' or go to line 21. There you can update parameters such as name, role, and contact details. If you don't want a particular parameter to show up on your website then set it equal to "". (An example of this on line 33.)
+Search for '[params]' or go to line 21. There you can update parameters such as name, role, and contact details. If you don't want a particular parameter to show up on your website then set it equal to "". (An example of this is on line 33.)
 
 Once you've updated these parameters, search for '[[params.social]]' or go to line 126. There you can update your contact details, such as email, twitter, etc. Just delete or comment out the full four lines if you don't want a particular contact type displayed on your website. You can always add more later.
 
