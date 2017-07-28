@@ -3,10 +3,10 @@
 date = "2017-06-27"
 
 # Project title.
-title = "The Paramount Importance of Childhood Environment during the Age of Mass Migration"
+title = "What impact did childhood environment have for US migrants?"
 
 # Project summary to display on homepage.
-summary = "Zach Ward and I estimate the importance of childhood environment for immigrant outcomes with a new dataset of arrivals linked to the 1940 US Census. We find that brothers who arrived at younger ages, or those with more childhood exposure to the American environment, had much higher adult incomes than older-arriving brothers. The high return to human capital acquired during childhood contrasts with a low rate of assimilation during this period. We further show that the quality of childhood environment is a primary determinant of a source country’s skill gap with natives, and may be more important than other factors like selection."
+summary = "By linking data on Ellis Island arrivals with the 1940 US Census Zach Ward and I estimate the importance of childhood environment for immigrant outcomes."
 
 
 # Optional image to display on homepage (relative to `static/img/` folder).
@@ -30,10 +30,4 @@ image = "headers/_DSC3816.jpg"
 
 +++
 
-Zach Ward and I estimate the importance of childhood environment for immigrant outcomes with
-a new dataset of arrivals linked to the 1940 US Census. We find that brothers who arrived at
-younger ages, or those with more childhood exposure to the American environment, had much
-higher adult incomes than older-arriving brothers. The high return to human capital acquired
-during childhood contrasts with a low rate of assimilation during this period. We further show
-that the quality of childhood environment is a primary determinant of a source country’s skill
-gap with natives, and may be more important than other factors like selection.
+By linking data on Ellis Island arrivals with the 1940 US Census Zach Ward and I estimate the importance of childhood environment for immigrant outcomes. Looking only at male siblings, a brother who arrived in the US at a younger age had higher adult incomes than their brother who arrived at an older age. The high return to human capital acquired during childhood contrasts with a low rate of assimilation during this period. We further show that the quality of childhood environment is a primary determinant of a source country’s skill gap with natives, and may be more important than other factors like selection.
