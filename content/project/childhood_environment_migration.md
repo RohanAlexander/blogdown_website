@@ -25,7 +25,7 @@ math = false
 
 # Optional featured image (relative to `static/img/` folder).
 [header]
-image = "headers/_DSC3816.jpg"
+image = "DSC_1229.png"
 #caption = "A galah"
 
 +++
