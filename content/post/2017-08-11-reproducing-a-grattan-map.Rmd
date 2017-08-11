@@ -60,7 +60,7 @@ incomes <- incomes %>%
 ```
 
 ## Geographies
-The other dataset that I needed was the geographies that the Grattan Institute had used. I initially wasted a lot of time using the 2016 SA3 release. Eventually I realised they were using the SA3 release from 2011 (this could have been better documented in the report by specifying 2011 SA3 areas). This is available from the ABS website at: http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument and I used the zipped file: 'Statistical Area Level 3 (SA3) ASGS Ed 2011 Digital Boundaries in ESRI Shapefile Format'.
+The other dataset that I needed was the geographies that the Grattan Institute had used. I initially wasted a lot of time using the 2016 SA3 release. Eventually I realised they were using the SA3 release from 2011 (I may have missed it but I don't think this was documented). This is available from the ABS website at: http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument and I used the zipped file: 'Statistical Area Level 3 (SA3) ASGS Ed 2011 Digital Boundaries in ESRI Shapefile Format'.
 
 ```{r, eval=FALSE}
 # 2011 SA3 boundaries
@@ -73,9 +73,9 @@ Comparing the incomes data with the 2011 geographies data indicates the incomes 
 
 
 # Map
-Once the pieces were in place it was straightforward to make a map. I called Leaflet and specified a black and white base map. After that I adjusted the default view and then added the patchwork quilt that shows the incomes dataset by SA3 area. 
+Making the map was not complicated once the pieces were in place. I called Leaflet and specified a black and white base map. After that I adjusted the default view and then added the patchwork quilt that shows the incomes dataset by SA3 area. 
 
-I didn't spend too much time on the colours because the inferno palette got fairly close. Reproducing the breaks that the Grattan Institute used was straightforward by copying their bins. Box 1 in Appendix A of the Grattan Institute's report specifies how they came up with these bins. Give my purposes I didn't worry too much about this.
+I didn't spend too much time on the colours because the inferno palette got fairly close. I just copied their published bins to reproduce the breaks that the Grattan Institute used. Box 1 in Appendix A of the Grattan Institute's report specifies how they came up with these bins. Give my purposes I didn't worry too much about this.
 
 ```{r, eval=FALSE}
 # Set the color scheme 
