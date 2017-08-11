@@ -60,7 +60,7 @@ incomes <- incomes %>%
 ```
 
 ## Geographies
-The other dataset that I needed was the geographies that the Grattan Institute had used. I initially wasted a lot of time using the 2016 SA3 release. Eventually I realised they were using the SA3 release from 2011 (I may have missed it but I don't think this was documented). This is available from the ABS website at: http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument and I used the zipped file: 'Statistical Area Level 3 (SA3) ASGS Ed 2011 Digital Boundaries in ESRI Shapefile Format'.
+The other dataset that I needed was the geographies that the Grattan Institute had used. I initially wasted a lot of time using the 2016 SA3 release. Eventually I realised they were using the SA3 release from 2011. This is available from the ABS website at: http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument and I used the zipped file: 'Statistical Area Level 3 (SA3) ASGS Ed 2011 Digital Boundaries in ESRI Shapefile Format'.
 
 ```{r, eval=FALSE}
 # 2011 SA3 boundaries
@@ -69,7 +69,7 @@ old_boundaries <- readOGR(dsn = "data/1270055001_sa3_2011_aust_shape", layer = "
 old_boundaries <- merge(old_boundaries, incomes, by.x = "SA3_NAME11", by.y = "SA3")
 ```
 
-Comparing the incomes data with the 2011 geographies data indicates the incomes data is missing two SA3 areas: 'Illawarra Catchment Reserve' and 'Blue Mountains - South'. I also found these areas had been left as NA in the Grattan Institute's interactive map. This gave me confidence that the Grattan Institute was using the 2011 boundaries.
+Comparing the incomes data with the 2011 geographies data indicates the incomes data is missing two SA3 areas: 'Illawarra Catchment Reserve' and 'Blue Mountains - South'. I also found these areas had been left as NA in the Grattan Institute's interactive map. This made me confident that the Grattan Institute was using the 2011 boundaries (I may have missed it but I don't think this was documented).
 
 
 # Map
@@ -292,7 +292,7 @@ Outback - North  | 2.33 | 0.017 | 2.33
 Port Douglas - Daintree  | 1.73 | 0.014 | 1.73
 Tablelands (East) - Kuranda  | 2.23 | 0.016 | 2.23
 
-
+Comparing just the values that I recreated with the values that the Grattan Institute published, it looks like in their Excel dataset they have ordered the columns for the SA3 areas and the incomes data separately instead of as a pair.
 
 ## Reconciliation
 I've reached out to the Grattan Institute and will update this post based on what they say.

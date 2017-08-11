@@ -43,12 +43,12 @@ incomes &lt;- incomes %&gt;%
 </div>
 <div id="geographies" class="section level2">
 <h2>Geographies</h2>
-<p>The other dataset that I needed was the geographies that the Grattan Institute had used. I initially wasted a lot of time using the 2016 SA3 release. Eventually I realised they were using the SA3 release from 2011 (I may have missed it but I don’t think this was documented). This is available from the ABS website at: <a href="http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument">http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument</a> and I used the zipped file: ‘Statistical Area Level 3 (SA3) ASGS Ed 2011 Digital Boundaries in ESRI Shapefile Format’.</p>
+<p>The other dataset that I needed was the geographies that the Grattan Institute had used. I initially wasted a lot of time using the 2016 SA3 release. Eventually I realised they were using the SA3 release from 2011. This is available from the ABS website at: <a href="http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument">http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument</a> and I used the zipped file: ‘Statistical Area Level 3 (SA3) ASGS Ed 2011 Digital Boundaries in ESRI Shapefile Format’.</p>
 <pre class="r"><code># 2011 SA3 boundaries
 old_boundaries &lt;- readOGR(dsn = &quot;data/1270055001_sa3_2011_aust_shape&quot;, layer = &quot;SA3_2011_AUST&quot;)
 # Add the income data into the boundaries dataset
 old_boundaries &lt;- merge(old_boundaries, incomes, by.x = &quot;SA3_NAME11&quot;, by.y = &quot;SA3&quot;)</code></pre>
-<p>Comparing the incomes data with the 2011 geographies data indicates the incomes data is missing two SA3 areas: ‘Illawarra Catchment Reserve’ and ‘Blue Mountains - South’. I also found these areas had been left as NA in the Grattan Institute’s interactive map. This gave me confidence that the Grattan Institute was using the 2011 boundaries.</p>
+<p>Comparing the incomes data with the 2011 geographies data indicates the incomes data is missing two SA3 areas: ‘Illawarra Catchment Reserve’ and ‘Blue Mountains - South’. I also found these areas had been left as NA in the Grattan Institute’s interactive map. This made me confident that the Grattan Institute was using the 2011 boundaries (I may have missed it but I don’t think this was documented).</p>
 </div>
 </div>
 <div id="map" class="section level1">
@@ -366,6 +366,7 @@ head(sa3_data, n = 20)</code></pre>
 </tr>
 </tbody>
 </table>
+<p>Comparing just the values that I recreated with the values that the Grattan Institute published, it looks like in their Excel dataset they have ordered the columns for the SA3 areas and the incomes data separately instead of as a pair.</p>
 </div>
 <div id="reconciliation" class="section level2">
 <h2>Reconciliation</h2>
