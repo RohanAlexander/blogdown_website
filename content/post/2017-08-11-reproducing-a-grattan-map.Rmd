@@ -148,7 +148,7 @@ Tablelands (East) - Kuranda  | 2.23 | 1.6
 The key issue is which is right - the Carto map which is the one in the report or the dataset that they released. 
 
 # Down the rabbit hole
-By this stage it was after dinner, and I'll admit that I was a glass or three of wine down. But the only way to work out whether it was the dataset or the map that was wrong was to recreate the dataset myself. To do this I needed: 
+By this stage it was after dinner, and I'd had a glass or three of wine. But the only way to work out whether it was the dataset or the map that was wrong was to recreate the dataset myself. To do this I needed: 
 
 * incomes data for financial years 2003-04 and 2014-15;
 * an inflation rate over this time to make the 2003-04 data real;
@@ -281,7 +281,7 @@ head(sa3_data, n = 20)
 
 My dataset can be downloaded as a csv here: https://github.com/RohanAlexander/blogdown_website/blob/master/content/post/sa3_data.csv
 
-The values underlying the Grattan Carto graph and the values that I generated are the same for the five 2011 SA3 areas that first identified a problem:
+The values underlying the Grattan Carto graph and the values that I generated are the same for the five 2011 SA3 areas in the earlier table:
 
 SA3 Area  | Grattan Carto value | Grattan data value | My value
 ------------- | ------------- | ------------- | -------------
