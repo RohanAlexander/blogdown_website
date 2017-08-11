@@ -213,12 +213,12 @@ inflation_data <- inflation_data %>%
   mutate(
     average_index_over_year = rollmean(index_value, 4, align = 'right', fill = NA)
   )
-# Now we just use (final_year_ave / first_year_ave) (don't need to bother with removing the 1 or multiplying by 100 because we are just going to multiply the first years data up to get in terms of final year)
+# Now we just use (final_year_ave / first_year_ave) (don't need to bother with removing the 1 or multiplying by 100 because we are just going to multiply the first year data up to get in terms of final year)
 inflation_rate <- 
   ((inflation_data$average_index_over_year[inflation_data$quarter == "Jun-2015"] / inflation_data$average_index_over_year[inflation_data$quarter == "Jun-2004"]))
 ```
 
-This ends up with an adjustment of about 1.34. I also worked out the annual inflation rates and then chained them, and also tried just using the start and end quarter index numbers (not averaged). They came to fairly similar values, so even though I'm not exactly sure what the Grattan Institute has done here, it shoudn't matter too much.
+This ends up with an adjustment of about 1.34. I also worked out the annual inflation rates and then chained them, and also tried just using the start and end quarter index numbers (not averaged). They came to fairly similar values, so even though I'm not exactly sure what the Grattan Institute has done here, it shouldn't matter too much.
 
 ## Growth
 I then needed to create the annual growth rate that the Grattan Institute used (p. 34):
