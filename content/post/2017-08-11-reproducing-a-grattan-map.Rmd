@@ -2,7 +2,7 @@
 title: Reproducing a Grattan Institute map
 author: Rohan
 date: '2017-08-11'
-slug: reproducing-a-grattan-map
+slug: grattan-map
 categories: []
 tags: []
 draft: no
