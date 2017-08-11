@@ -24,7 +24,7 @@ library(knitr)
 
 ```{r, echo=FALSE}
 knitr::include_app("https://rohanalexander.shinyapps.io/polling_place_firstpref_winner/", 
-  height = "700px")
+  height = "600px")
 ```
 
 The note that follows introduces Australia's political system, and then details the process of downloading and merging first-preference votes by polling place, and then plotting it on an interactive map.

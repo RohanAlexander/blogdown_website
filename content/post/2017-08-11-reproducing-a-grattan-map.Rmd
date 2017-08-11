@@ -1,8 +1,8 @@
 ---
-title: Reproducing a Grattan Institute graph
+title: Reproducing a Grattan Institute map
 author: Rohan
 date: '2017-08-11'
-slug: reproducing-a-grattan-graph
+slug: reproducing-a-grattan-map
 categories: []
 tags: []
 draft: no
@@ -19,14 +19,16 @@ library(knitr)
 *Thank you to Monica for her helpful edits.*
 
 # Introduction
-The Grattan Institute is an Australian think-tank that produces reports about public policy. Last week they released ['Regional patterns of Australia's economy and population'](https://grattan.edu.au/report/regional-patterns-of-australias-economy-and-population/). That report looks into the differences between geographic areas across various economic and demographic variables. It included interactive maps made using Carto. In addition to the report, the Grattan Institute released the datasets that they said underlay their maps and graphs.
+The Grattan Institute is an Australian think tank that produces reports about public policy. Last week they released ['Regional patterns of Australia's economy and population'](https://grattan.edu.au/report/regional-patterns-of-australias-economy-and-population/). That report looks into the differences between geographic areas across various economic and demographic variables. It includes interactive maps made using Carto. The Grattan Institute also released the datasets that underpin the report's maps and graphs.
 
-I was interested to see if I could reproduce one of their interactive maps - [Annual income growth per person (FY04 - FY15)](https://grattan.carto.com/me) - in an hour using R and the leaflet package. A day later I found the underlying dataset did not correspond with the map that the Grattan Institute published. But following the methodology in the report I was able to create a dataset that was pretty close to the values illustrated on their map.
+I was interested to see if I could reproduce one of their interactive maps - [Annual income growth per person (FY04 - FY15)](https://grattan.carto.com/me) - in an hour using R and the Leaflet package. A day later I found the underlying dataset did not correspond with the map that the Grattan Institute published. But following the methodology in the report I was able to create a dataset that seems pretty close to the values illustrated on their map.
 
-The final map that I produced is below and this note records what I did to produce it.
+The final map that I produced is below (it'll take about 5 seconds to load) and this note records what I did to produce it in R using the Leaflet package.
 
-**INSERT LINK TO THE MAP HERE**
-
+```{r, echo=FALSE}
+knitr::include_app("https://rohanalexander.shinyapps.io/grattan/", 
+  height = "600px")
+```
 
 
 
@@ -47,7 +49,7 @@ library(rmapshaper)
 I decided to reproduce Figure 2.4 of the report. This shows the average annual growth in real taxable income per tax filer between the financial years 2003/04 and 2014/15 for the 2011 SA3 areas. To do this I needed the incomes data that the Grattan Institute mapped and the geographic data that defines the areas.
 
 ## Incomes
-The Grattan Institute released the datasets that they said had been mapped. It was straightforward to download this and export the relevant sheet as a csv file. The Excel file is available at https://grattan.edu.au/report/regional-patterns-of-australias-economy-and-population/ (in the left panel).
+The Grattan Institute released the datasets that they said had been mapped. It was straightforward to download this file and export the relevant sheet as a csv file. The Excel file is available at https://grattan.edu.au/report/regional-patterns-of-australias-economy-and-population/ (in the left panel).
 
 ```{r, eval=FALSE}
 # Import the income data that has been taken from the Grattan data download, sheet 'Figure 2.4' (which was saved as a csv).
@@ -58,7 +60,7 @@ incomes <- incomes %>%
 ```
 
 ## Geographies
-The other dataset that I needed was the geographies that the Grattan Institute had used. I initially wasted a lot of time using the 2016 SA3 release. Eventually I realised they were using the SA3 release from 2011 (this could have been better documented in the report although it's possible that it was and I just missed it). This is available from the ABS website at: http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument and I used the zipped file: 'Statistical Area Level 3 (SA3) ASGS Ed 2011 Digital Boundaries in ESRI Shapefile Format'.
+The other dataset that I needed was the geographies that the Grattan Institute had used. I initially wasted a lot of time using the 2016 SA3 release. Eventually I realised they were using the SA3 release from 2011 (this could have been better documented in the report by specifying 2011 SA3 areas). This is available from the ABS website at: http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument and I used the zipped file: 'Statistical Area Level 3 (SA3) ASGS Ed 2011 Digital Boundaries in ESRI Shapefile Format'.
 
 ```{r, eval=FALSE}
 # 2011 SA3 boundaries
@@ -67,13 +69,13 @@ old_boundaries <- readOGR(dsn = "data/1270055001_sa3_2011_aust_shape", layer = "
 old_boundaries <- merge(old_boundaries, incomes, by.x = "SA3_NAME11", by.y = "SA3")
 ```
 
-Comparing the incomes data with the 2011 geographies data indicates the incomes data is missing two SA3 areas: 'Illawarra Catchment Reserve' and 'Blue Mountains - South'. I also found these areas had been left as NA in the Grattan Institute's interactive map. This made me confident that the Grattan Institute was using the 2011 boundaries.
+Comparing the incomes data with the 2011 geographies data indicates the incomes data is missing two SA3 areas: 'Illawarra Catchment Reserve' and 'Blue Mountains - South'. I also found these areas had been left as NA in the Grattan Institute's interactive map. This gave me confidence that the Grattan Institute was using the 2011 boundaries.
 
 
 # Map
-Once the pieces were in place it was straightforward to make a map. I called leaflet and specified a black and white base map that is similar to the Grattan Institute's. After that I adjusted the default view and then added the patchwork quilt that shows the incomes dataset by SA3 area. 
+Once the pieces were in place it was straightforward to make a map. I called Leaflet and specified a black and white base map. After that I adjusted the default view and then added the patchwork quilt that shows the incomes dataset by SA3 area. 
 
-I didn't spend too much time on the colours because the inferno palette got fairly close. Reproducing the breaks that Grattan used was straightforward by copying their bins. Box 1 in Appendix A of the Grattan Institute's report specifies how they came up with these bins. Give my purposes I didn't worry too much about this.
+I didn't spend too much time on the colours because the inferno palette got fairly close. Reproducing the breaks that the Grattan Institute used was straightforward by copying their bins. Box 1 in Appendix A of the Grattan Institute's report specifies how they came up with these bins. Give my purposes I didn't worry too much about this.
 
 ```{r, eval=FALSE}
 # Set the color scheme 
@@ -130,7 +132,7 @@ And there are also some areas where the colours are fairly different (notwithsta
 ## Triage
 I checked that I was using the dataset that I had meant to use. While I was checking this dataset (which is the one that the Grattan Institute makes available) I noticed that the numbers in the Grattan Institute's dataset were not always the ones that were being mapped. This was easy to see because they included a static version of the map next to the dataset, so I was confident it was meant to be the same. 
 
-While I couldn't work out how to download the actual dataset underlying the interactive Carto map, I was able to check some on an area-by-area basis because the value was display on hover. I found that the figure that was displayed did line up with the colour of the area, but not the dataset that they offered as underlying the map.
+I couldn't work out how to download the actual dataset underlying the interactive Carto map. But I was able to check some on an area-by-area basis because the value was displayed on mouse-hover. I found that the figure that was displayed did line up with the colour of the area, but not the dataset that they offered as underpinning the map.
 
 The following table summarises some of the SA3 areas in north Queensland. 
 
@@ -145,16 +147,16 @@ Tablelands (East) - Kuranda  | 2.23 | 1.6
 
 The key issue is which is right - the Carto map which is the one in the report or the dataset that they released. 
 
-## Investigation
-By this stage it was after dinner, and I'll admit that I was a glass or three of wine down. But the only way to work out whether it was the dataset or the map that was wrong was to recreate the series myself. To do this I needed: 
+# Down the rabbit hole
+By this stage it was after dinner, and I'll admit that I was a glass or three of wine down. But the only way to work out whether it was the dataset or the map that was wrong was to recreate the dataset myself. To do this I needed: 
 
 * incomes data for financial years 2003-04 and 2014-15;
 * an inflation rate over this time to make the 2003-04 data real;
 * a correspondence from postcodes (which is the geography that the incomes data is available on) to the 2011 SA3 areas.
 
-Without their code it's hard to be sure, but the Grattan Institute provided enough information in the report that I was confident I could get reasonably close to what they'd done.
+Without their code it would be hard to be certain, but the Grattan Institute provided enough information in the report that I was confident I could get reasonably close to what they'd done.
 
-### Incomes
+## Incomes
 The incomes data is from Table 8 of the 2015 tax stats which is available here:
 https://data.gov.au/dataset/taxation-statistics-2014-15/resource/02e58971-ddee-4f77-af15-5c45de569ed6
 
@@ -184,8 +186,8 @@ tax_data$median_inc_1415 <- as.numeric(tax_data$median_inc_1415)
 tax_data$ave_inc_1415 <- as.numeric(tax_data$ave_inc_1415)
 ```
 
-### Inflation
-I needed to change the financial year 2003-04 into 2014-15 dollars. In the Grattan Institute's report (p. 34) they say:
+## Inflation
+I needed to change the financial year 2003-04 incomes into 2014-15 dollars. In the Grattan Institute's report (p. 34) they say:
 
 > Nominal income for the 2003-04 financial year was adjusted to real
 2014-15 dollars, using a yearly average of ABS quarterly data on the
@@ -193,7 +195,7 @@ Consumer Price Index, starting from the 2003 September quarter.
 
 I downloaded the inflation data that they specified from:
 http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/6401.0Mar%202017?OpenDocument
-(it is Tables 1 and 2 of the release). It is series A2325846C. I wasn't entirely sure of how the Grattan Institute was constructing its measure, but decided to just go with the RBA formula (http://www.rba.gov.au/calculator/) which is (Average of the four quarters in the final year / average of the four quarters in the first year - 1) *100 (although I didn't need to worry about removing one or the multiplying. 
+(it is Series A2325846C which is in Tables 1 and 2 of the release). I wasn't exactly sure how the Grattan Institute constructed its measure, but I decided to just go with the RBA formula (http://www.rba.gov.au/calculator/) which is: (Average of the four quarters in the final year / average of the four quarters in the first year - 1) *100, although I didn't need to worry about removing one or the multiplying. 
 
 ```{r, eval=FALSE}
 # Import the inflation data
@@ -216,10 +218,10 @@ inflation_rate <-
   ((inflation_data$average_index_over_year[inflation_data$quarter == "Jun-2015"] / inflation_data$average_index_over_year[inflation_data$quarter == "Jun-2004"]))
 ```
 
-This ends up with an adjustment of about 1.34. I also worked out the annual inflation rates and then chained them, and also just using the start and end quarter index numbers (not averaged). They came to fairly similar values, so even though I'm not exactly sure what the Grattan Institute has done here, it shoudn't matter too much.
+This ends up with an adjustment of about 1.34. I also worked out the annual inflation rates and then chained them, and also tried just using the start and end quarter index numbers (not averaged). They came to fairly similar values, so even though I'm not exactly sure what the Grattan Institute has done here, it shoudn't matter too much.
 
-### Growth
-Now I created the series that the Grattan Institute (p. 34) is interested in: 
+## Growth
+I then needed to create the annual growth rate that the Grattan Institute used (p. 34):
 
 > Growth in taxable income is calculated as a compound annual growth
 rate from the 2003-04 financial year to the 2014-15 financial year.
@@ -236,9 +238,8 @@ tax_data <- tax_data %>%
 ```
 
 
-### Correspondence
-The incomes data that the ATO makes available is on a postcode basis. I needed to convert this into 2011 SA3 levels and the ABS makes a correspondence available for this purpose from: 
-http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.006July%202011?OpenDocument where the right table is the zipped file 'Postcode 2011 to Statistical Area Level 3 2011'.
+## Correspondence
+The incomes data that the ATO makes available is on a postcode basis. I needed to convert this into 2011 SA3 levels and the ABS makes a correspondence for this purpose. This is available at: http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.006July%202011?OpenDocument where the correct table is the zipped file 'Postcode 2011 to Statistical Area Level 3 2011'.
 
 ```{r, eval=FALSE}
 # Import the correspondence
@@ -271,17 +272,20 @@ sa3_data <- correspondence %>%
   )
 ```
 
-This result of all this is that I created a dataset that should be fairly similar to the one that the Grattan Institute created.
+## Putting it all together
+This result of all this is that I created a dataset that seems pretty much the same as the one that the Grattan Institute mapped, but not the one that they released.
 ```{r, eval=TRUE}
 load("sa3_data.Rda")
-head(sa3_data)
+head(sa3_data, n = 20)
 ```
 
-Comparing the areas that were in the earlier table, my estimates consistently seemed a little lower than their estimates. The immediate reason for the difference that came to mind is that I may have a slightly different inflation rate or may have made a mistake in the correspondence.
+My dataset can be downloaded as a csv here: https://github.com/RohanAlexander/blogdown_website/blob/master/content/post/sa3_data.csv
+
+The values underlying the Grattan Carto graph and the values that I generated are the same for the five 2011 SA3 areas that first identified a problem:
 
 SA3 Area  | Grattan Carto value | Grattan data value | My value
 ------------- | ------------- | ------------- | -------------
-Cairns - South  | 1.73 | 0.020 | 1.81
+Cairns - South  | 1.73 | 0.020 | 1.73
 Charters Towers - Ayr - Ingham  | 2.35 | 0.016 | 2.35
 Far North   | 2.66 | 0.030 | 2.66
 Outback - North  | 2.33 | 0.017 | 2.33
@@ -289,13 +293,10 @@ Port Douglas - Daintree  | 1.73 | 0.014 | 1.73
 Tablelands (East) - Kuranda  | 2.23 | 0.016 | 2.23
 
 
-I think the maps in the Grattan Institute report are broadly fine, and it was just the accompanying dataset that is wrong. My dataset can be downloaded as a csv here:
-
 
 ## Reconciliation
-I've reached out to Grattan and will update this post based on what they say.
+I've reached out to the Grattan Institute and will update this post based on what they say.
 
-# Median vs mean
 
 
 # Conclusion
@@ -306,4 +307,4 @@ It was fun to spend the day in the data-analyst's version of a treasure chase. B
 ![I regret nothing :)](https://imgs.xkcd.com/comics/duty_calls.png)
 
 
-*Disclosures: In the interest of transparency I'll point out that I applied unsuccessfully for a job at the Grattan Institute about five years ago. One friend works as a research assistant for them on a casual basis; and there are a few friends-of-friends who work there full time, but I haven't talked about any of this with any of them.*
+*Disclosures: In the interest of transparency I'll point out that I applied unsuccessfully for a job at the Grattan Institute about five years ago. One friend works as a research assistant for them on a casual basis; and there are a few friends-of-friends who work there full time, but I haven't talked about this post with any of them.*
