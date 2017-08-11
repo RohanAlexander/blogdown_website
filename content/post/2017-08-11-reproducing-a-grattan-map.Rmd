@@ -281,7 +281,7 @@ head(sa3_data, n = 20)
 
 My dataset can be downloaded as a csv here: https://github.com/RohanAlexander/blogdown_website/blob/master/content/post/sa3_data.csv
 
-The values underlying the Grattan Carto graph and the values that I generated are the same for the five 2011 SA3 areas in the earlier table:
+The values underlying the Grattan Carto map and the values that I generated are the same for the five 2011 SA3 areas in the earlier table:
 
 SA3 Area  | Grattan Carto value | Grattan data value | My value
 ------------- | ------------- | ------------- | -------------
@@ -300,9 +300,9 @@ I've reached out to the Grattan Institute and will update this post based on wha
 
 
 # Conclusion
-The Grattan Institute is probably Australia's most important think tank in terms of not being overly associated with one side of politics but still making a contribution to thinking on policy. It is good that they are being more open about their datasets, but it would be much better if they made their code available. Using tools like leaflet and ggmap instead of Carto would help with this.
+The Grattan Institute is probably Australia's most important think tank in terms of not being overly associated with one side of politics but still making a contribution to thinking on policy. It is good that they are being more open about their datasets, but it would be much better if they made their code available. Using tools like Leaflet and ggmap instead of Carto would help with this.
 
-It was fun to spend the day in the data-analyst's version of a treasure chase. But hopefully the next time I decide to reproduce a Grattan Institute graph common sense prevails before I go too far down the rabbit hole.
+It was fun to spend the day in the data-analyst's version of a treasure chase. But hopefully the next time I decide to reproduce a Grattan Institute map common sense prevails before I go too far down the rabbit hole.
 
 ![I regret nothing :)](https://imgs.xkcd.com/comics/duty_calls.png)
 
