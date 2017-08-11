@@ -10,81 +10,63 @@ draft: no
 
 
 
-<p><em>tl;dr: I was pretty much able to reproduce a recent interactive map from the Grattan Institute. I found that the released dataset doesn’t correspond with the published map for the one that I reproduced. But following their notes I was able to get values that were the same to those illustrated in the map for many areas. It is great that the Grattan Institute is making an effort to be more open with its data, but it should also make its code available. Moving from Carto to ggmap/leaflet for mapping could also help by better integrating the data analysis process with the reporting.</em></p>
-<p><em>(Disclosures: In the interest of transparency I’ll point out that I applied unsuccessfully for a job at the Grattan Institute about five years ago. One friend works as a research assistant for them on a casual basis; and there are a few friends-of-friends who work there full time, but I haven’t talked about any of this with any of them.)</em></p>
+<p><em>Thank you to Monica for her helpful edits.</em></p>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>The Grattan Institute is an Australian think-tank that produces reports about public policy. One released last week - <a href="https://grattan.edu.au/report/regional-patterns-of-australias-economy-and-population/">Regional patterns of Australia’s economy and population</a> - looked into the differences between geographic areas across various economic and demographic variables. Earlier this year I spent a fair bit of time getting comfortable making static and interactive maps. So I was curious to see if I could independently reproduce one of the interactive maps - <a href="https://grattan.carto.com/me">Annual income growth per person (FY04 - FY15)</a> - in an hour.</p>
-<p>I was reasonably successful in using R’s Leaflet package and the dataset that the Grattan Institute said underpinned the maps to visually reproduce what they’d done in Carto in just an hour. But it didn’t stand up to closer inspection. It took the rest of the day for me to conclude that the data that the Grattan Institute mapped is reasonable but for this map the dataset they released is wrong.</p>
-<p>The final map that I produced is available below and the note that follows documents what I did to produce it.</p>
+<p>The Grattan Institute is an Australian think-tank that produces reports about public policy. Last week they released <a href="https://grattan.edu.au/report/regional-patterns-of-australias-economy-and-population/">‘Regional patterns of Australia’s economy and population’</a>. That report looks into the differences between geographic areas across various economic and demographic variables. It included interactive maps made using Carto. In addition to the report, the Grattan Institute released the datasets that they said underlay their maps and graphs.</p>
+<p>I was interested to see if I could reproduce one of their interactive maps - <a href="https://grattan.carto.com/me">Annual income growth per person (FY04 - FY15)</a> - in an hour using R and the leaflet package. A day later I found the underlying dataset did not correspond with the map that the Grattan Institute published. But following the methodology in the report I was able to create a dataset that was pretty close to the values illustrated on their map.</p>
+<p>The final map that I produced is below and this note records what I did to produce it.</p>
 <p><strong>INSERT LINK TO THE MAP HERE</strong></p>
 </div>
 <div id="workspace" class="section level1">
 <h1>Workspace</h1>
-<p>The first step is to set-up the workspace. Mostly this just means loading packages. The <tt>tidyverse</tt> and <tt>magrittr</tt> packages help with general data manipulation tasks; <tt>zoo</tt> helps with the rolling average; and <tt>leaflet</tt>, <tt>rgdal</tt>, and <tt>rmapshaper</tt> are specific to mapping.</p>
+<p>The first step was to set-up the workspace. Mostly this just meant loading packages. The <tt>tidyverse</tt> and <tt>magrittr</tt> packages help with general data manipulation tasks; <tt>zoo</tt> helps with the rolling average needed later; and <tt>leaflet</tt>, <tt>rgdal</tt>, and <tt>rmapshaper</tt> are specific to mapping.</p>
 <pre class="r"><code>library(tidyverse)
 library(magrittr)
 library(zoo)
 library(leaflet)
 library(rgdal)
-library(rmapshaper)
-#update.packages()
-# Change working directory
-setwd(&quot;~/Documents/projects/coriander&quot;)</code></pre>
+library(rmapshaper)</code></pre>
 </div>
 <div id="data" class="section level1">
 <h1>Data</h1>
 <p>I decided to reproduce Figure 2.4 of the report. This shows the average annual growth in real taxable income per tax filer between the financial years 2003/04 and 2014/15 for the 2011 SA3 areas. To do this I needed the incomes data that the Grattan Institute mapped and the geographic data that defines the areas.</p>
 <div id="incomes" class="section level2">
 <h2>Incomes</h2>
-<p>The Grattan Institute released the datasets that they said underlie the charts. It was straightforward to download this and export the relevant sheet as a csv file. The excel file is available at <a href="https://grattan.edu.au/report/regional-patterns-of-australias-economy-and-population/" class="uri">https://grattan.edu.au/report/regional-patterns-of-australias-economy-and-population/</a> (in the left panel).</p>
-<pre class="r"><code>#### Data ####
-# Import the income data that has been taken from the Grattan data download, sheet &#39;Figure 2.4&#39;. I saved that particular sheet as a CSV.
+<p>The Grattan Institute released the datasets that they said had been mapped. It was straightforward to download this and export the relevant sheet as a csv file. The Excel file is available at <a href="https://grattan.edu.au/report/regional-patterns-of-australias-economy-and-population/" class="uri">https://grattan.edu.au/report/regional-patterns-of-australias-economy-and-population/</a> (in the left panel).</p>
+<pre class="r"><code># Import the income data that has been taken from the Grattan data download, sheet &#39;Figure 2.4&#39; (which was saved as a csv).
 incomes &lt;- read_csv(&quot;data/890-Regional-patterns-chart-data.csv&quot;)
-names(incomes)
-# Remove some columns of debris that aren&#39;t important
+# Remove some debris columns
 incomes &lt;- incomes %&gt;%
   select(&quot;SA3&quot;, &quot;Growth_mean_income_FY04_FY15&quot;)</code></pre>
 </div>
 <div id="geographies" class="section level2">
 <h2>Geographies</h2>
-<p>The other dataset that I needed was the geographies that the Grattan Institute had used. I initially wasted a lot of time using the 2016 SA3 release. After a lot of messing around I realised they were using the SA3 release from 2011. This is available from the ABS website at: <a href="http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument">http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument</a> and I used the zipped file: ‘Statistical Area Level 3 (SA3) ASGS Ed 2011 Digital Boundaries in ESRI Shapefile Format’.</p>
-<pre class="r"><code>#### Read in the shapefiles (maps) that show each of the boundaries of the SA3-level area.
-
-# 2016 SA3 boundaries
-boundaries &lt;- readOGR(dsn = &quot;data/1270055001_sa3_2016_aust_shape&quot;, layer = &quot;SA3_2016_AUST&quot;)
-# Add the incomes dataset into the boundaries dataset
-boundaries &lt;- merge(boundaries, incomes, by.x = &quot;SA3_NAME16&quot;, by.y = &quot;SA3&quot;)
-
-# 2011 SA3 boundaries
+<p>The other dataset that I needed was the geographies that the Grattan Institute had used. I initially wasted a lot of time using the 2016 SA3 release. Eventually I realised they were using the SA3 release from 2011 (this could have been better documented in the report although it’s possible that it was and I just missed it). This is available from the ABS website at: <a href="http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument">http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument</a> and I used the zipped file: ‘Statistical Area Level 3 (SA3) ASGS Ed 2011 Digital Boundaries in ESRI Shapefile Format’.</p>
+<pre class="r"><code># 2011 SA3 boundaries
 old_boundaries &lt;- readOGR(dsn = &quot;data/1270055001_sa3_2011_aust_shape&quot;, layer = &quot;SA3_2011_AUST&quot;)
-# Again, push the income data into the boundaries dataset
+# Add the income data into the boundaries dataset
 old_boundaries &lt;- merge(old_boundaries, incomes, by.x = &quot;SA3_NAME11&quot;, by.y = &quot;SA3&quot;)</code></pre>
-<p>Comparing the incomes data with the 2011 geographies data you notice that the incomes data is missing two SA3 areas: ‘Illawarra Catchment Reserve’ and ‘Blue Mountains - South’. If you look at Grattan’s interactive map for long enough you’ll notice they too have NAs in those two areas. While this gives some reassurance that the 2011 geographies are the right ones to be using, it was a bit annoying that this wasn’t documented somewhere (although it’s possible I missed it).</p>
+<p>Comparing the incomes data with the 2011 geographies data indicates the incomes data is missing two SA3 areas: ‘Illawarra Catchment Reserve’ and ‘Blue Mountains - South’. I also found these areas had been left as NA in the Grattan Institute’s interactive map. This made me confident that the Grattan Institute was using the 2011 boundaries.</p>
 </div>
 </div>
-<div id="breaks-and-colours" class="section level1">
-<h1>Breaks and colours</h1>
-<p>Reproducing the breaks that Grattan used was straightforward by copying their bins. Box 1 in Appendix A of the Grattan Institute’s report specifies how they came up with these bins. Give my purposes I didn’t worry too much about this.</p>
-<p>I also didn’t spend too much time on the colours because the inferno palette got fairly close.</p>
-<pre class="r"><code>#### Specify the colour schemes that will be used. ####
-# Set the color scheme for the booth coloring (virdis options are: &quot;viridis&quot;, &quot;magma&quot;, &quot;plasma&quot; and &quot;inferno&quot;, but there are lots)
+<div id="map" class="section level1">
+<h1>Map</h1>
+<p>Once the pieces were in place it was straightforward to make a map. I called leaflet and specified a black and white base map that is similar to the Grattan Institute’s. After that I adjusted the default view and then added the patchwork quilt that shows the incomes dataset by SA3 area.</p>
+<p>I didn’t spend too much time on the colours because the inferno palette got fairly close. Reproducing the breaks that Grattan used was straightforward by copying their bins. Box 1 in Appendix A of the Grattan Institute’s report specifies how they came up with these bins. Give my purposes I didn’t worry too much about this.</p>
+<pre class="r"><code># Set the color scheme 
 pal &lt;- colorBin(
   palette = &quot;inferno&quot;,
   domain = old_boundaries$Growth_mean_income_FY04_FY15,
   bins = c(0, 0.005, 0.012, 0.015, 0.017, 0.019, 0.022, 0.029, 0.07),
   reverse = TRUE
-  )</code></pre>
-</div>
-<div id="map" class="section level1">
-<h1>Map</h1>
-<p>Once the pieces were in place it was straightforward to make a map. I called leaflet and specified a black and white base map that is similar to the Grattan Institute’s. After that I adjusted the default view and then added the patchwork quilt that shows the incomes dataset by SA3 area.</p>
-<pre class="r"><code>#### Pull it all together to make the map ####
+  )
+
 # Make the map
 Australia_incomes_map &lt;- 
   leaflet() %&gt;%
-  # Base groups
-  addProviderTiles(providers$Stamen.TonerLite, group = &quot;Toner Lite&quot;) %&gt;% # Add a black and white alternative
+  # Base map
+  addProviderTiles(providers$Stamen.TonerLite, group = &quot;Toner Lite&quot;) %&gt;% 
   setView(lng = 133.7751, lat = -25.2744, zoom = 4) %&gt;% # Specify where the map is initially focused
   addPolygons(data = old_boundaries, 
               color = pal(old_boundaries$Growth_mean_income_FY04_FY15), 
@@ -97,19 +79,18 @@ Australia_incomes_map &lt;-
               highlightOptions = highlightOptions(color = &quot;#666&quot;, weight = 2, bringToFront = FALSE)) %&gt;% 
   addLegend(&quot;bottomright&quot;, pal = pal, values = old_boundaries$Growth_mean_income_FY04_FY15,
             title = &quot;Mean annual income growth (FY04 - FY15)&quot;,
-            #labFormat = labelFormat(prefix = &quot;$&quot;),
             opacity = 0.4
   )
 
 # Call the map
 Australia_incomes_map</code></pre>
-<p>There were many small tweaks that could be made to this default map to better reproduce the Grattan map, but at this stage I realised there was something going on with the data. I decided to spend more time with that than tweaking the remaining aspects.</p>
+<p>There were many small changes that could be made to better reproduce the Grattan Institute’s map, but at this stage I realised there was something going on with the data. I decided to spend more time with that than tweaking the remaining aspects.</p>
 </div>
 <div id="comparison" class="section level1">
 <h1>Comparison</h1>
 <div id="issues" class="section level2">
 <h2>Issues</h2>
-<p>Comparing screenshots of the maps it was clear that there were substantial data issues.</p>
+<p>Comparing screenshots of the maps shows some of the issues:</p>
 <div class="figure">
 <img src="/img/grattan.png" alt="Grattan’s map" />
 <p class="caption">Grattan’s map</p>
@@ -118,12 +99,12 @@ Australia_incomes_map</code></pre>
 <img src="/img/me.png" alt="My map" />
 <p class="caption">My map</p>
 </div>
-<p>There are areas where my map has a lot more variation such as:</p>
+<p>For instance there are areas where my map has a lot more variation such as:</p>
 <ul>
 <li>the northern SA3 areas of Queensland; and</li>
 <li>the SA3 areas in the south west of Western Australia.</li>
 </ul>
-<p>There are also some areas where the colours are fairly different (notwithstanding the fact that I didn’t match theirs exactly they should be similar), such as:</p>
+<p>And there are also some areas where the colours are fairly different (notwithstanding the fact that I didn’t match theirs exactly), such as:</p>
 <ul>
 <li>west of Melbourne where my values are a lot higher.</li>
 </ul>
@@ -131,8 +112,8 @@ Australia_incomes_map</code></pre>
 <div id="triage" class="section level2">
 <h2>Triage</h2>
 <p>I checked that I was using the dataset that I had meant to use. While I was checking this dataset (which is the one that the Grattan Institute makes available) I noticed that the numbers in the Grattan Institute’s dataset were not always the ones that were being mapped. This was easy to see because they included a static version of the map next to the dataset, so I was confident it was meant to be the same.</p>
-<p>Annoyingly, I couldn’t work out how to download the actual dataset underlying the interactive Carto map, but I was able to check some on an area-by-area basis because the value was display on hover. I found that the figure that was displayed did line up with the colour of the area, but not the dataset that they offered as underlying the map.</p>
-<p>The following table summarises some of the other SA3 areas. Note that I haven’t converted the dataset values into percentages but other than a magnitude it shouldn’t affect anything.</p>
+<p>While I couldn’t work out how to download the actual dataset underlying the interactive Carto map, I was able to check some on an area-by-area basis because the value was display on hover. I found that the figure that was displayed did line up with the colour of the area, but not the dataset that they offered as underlying the map.</p>
+<p>The following table summarises some of the SA3 areas in north Queensland.</p>
 <table>
 <thead>
 <tr class="header">
@@ -143,48 +124,48 @@ Australia_incomes_map</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Far North</td>
-<td>2.66</td>
-<td>0.030</td>
-</tr>
-<tr class="even">
-<td>Outback - North</td>
-<td>2.33</td>
-<td>0.017</td>
-</tr>
-<tr class="odd">
-<td>Port Douglas - Daintree</td>
-<td>1.73</td>
-<td>0.014</td>
-</tr>
-<tr class="even">
-<td>Tablelands (East) - Kuranda</td>
-<td>2.23</td>
-<td>0.016</td>
-</tr>
-<tr class="odd">
 <td>Cairns - South</td>
 <td>1.73</td>
-<td>0.020</td>
+<td>2.0</td>
 </tr>
 <tr class="even">
 <td>Charters Towers - Ayr - Ingham</td>
 <td>2.35</td>
-<td>0.016</td>
+<td>1.6</td>
+</tr>
+<tr class="odd">
+<td>Far North</td>
+<td>2.66</td>
+<td>3.0</td>
+</tr>
+<tr class="even">
+<td>Outback - North</td>
+<td>2.33</td>
+<td>1.7</td>
+</tr>
+<tr class="odd">
+<td>Port Douglas - Daintree</td>
+<td>1.73</td>
+<td>1.4</td>
+</tr>
+<tr class="even">
+<td>Tablelands (East) - Kuranda</td>
+<td>2.23</td>
+<td>1.6</td>
 </tr>
 </tbody>
 </table>
-<p>The key issue is which is right - the Carto map which is the one in the report or the dataset that they released. If the report is correct then this isn’t a big deal because I’d be surprised if many people looked at the accompanying dataset!</p>
+<p>The key issue is which is right - the Carto map which is the one in the report or the dataset that they released.</p>
 </div>
 <div id="investigation" class="section level2">
 <h2>Investigation</h2>
 <p>By this stage it was after dinner, and I’ll admit that I was a glass or three of wine down. But the only way to work out whether it was the dataset or the map that was wrong was to recreate the series myself. To do this I needed:</p>
 <ul>
-<li>incomes data for the financial years 2003-04 and 2014-15;</li>
+<li>incomes data for financial years 2003-04 and 2014-15;</li>
 <li>an inflation rate over this time to make the 2003-04 data real;</li>
 <li>a correspondence from postcodes (which is the geography that the incomes data is available on) to the 2011 SA3 areas.</li>
 </ul>
-<p>Without their code it’s hard to be sure, but luckily the Grattan Institute provided enough information so that I was able to get reasonably close to their results.</p>
+<p>Without their code it’s hard to be sure, but the Grattan Institute provided enough information in the report that I was confident I could get reasonably close to what they’d done.</p>
 <div id="incomes-1" class="section level3">
 <h3>Incomes</h3>
 <p>The incomes data is from Table 8 of the 2015 tax stats which is available here: <a href="https://data.gov.au/dataset/taxation-statistics-2014-15/resource/02e58971-ddee-4f77-af15-5c45de569ed6" class="uri">https://data.gov.au/dataset/taxation-statistics-2014-15/resource/02e58971-ddee-4f77-af15-5c45de569ed6</a></p>
@@ -256,7 +237,7 @@ tax_data &lt;- tax_data %&gt;%
 </div>
 <div id="correspondence" class="section level3">
 <h3>Correspondence</h3>
-<p>The incomes data that the ATO makes available is on a postcode basis. I needed to convert this into 2011 SA3 levels. Luckily the ABS makes a correspondence available from: <a href="http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.006July%202011?OpenDocument">http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.006July%202011?OpenDocument</a> where the right table is the zipped file ‘Postcode 2011 to Statistical Area Level 3 2011’.</p>
+<p>The incomes data that the ATO makes available is on a postcode basis. I needed to convert this into 2011 SA3 levels and the ABS makes a correspondence available for this purpose from: <a href="http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.006July%202011?OpenDocument">http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.006July%202011?OpenDocument</a> where the right table is the zipped file ‘Postcode 2011 to Statistical Area Level 3 2011’.</p>
 <pre class="r"><code># Import the correspondence
 correspondence &lt;- read_csv(&quot;data/1270055006_CG_POSTCODE_2011_SA3_2011.csv&quot;, skip = 7, col_names = FALSE)
 correspondence &lt;- correspondence %&gt;%
@@ -344,7 +325,7 @@ head(sa3_data)</code></pre>
 </tr>
 </tbody>
 </table>
-<p>The good news for the Grattan Institute is that I think the maps in their report are broadly fine, and it was just the accompanying dataset that is wrong.</p>
+<p>I think the maps in the Grattan Institute report are broadly fine, and it was just the accompanying dataset that is wrong. My dataset can be downloaded as a csv here:</p>
 </div>
 </div>
 <div id="reconciliation" class="section level2">
@@ -352,12 +333,16 @@ head(sa3_data)</code></pre>
 <p>I’ve reached out to Grattan and will update this post based on what they say.</p>
 </div>
 </div>
+<div id="median-vs-mean" class="section level1">
+<h1>Median vs mean</h1>
+</div>
 <div id="conclusion" class="section level1">
 <h1>Conclusion</h1>
 <p>The Grattan Institute is probably Australia’s most important think tank in terms of not being overly associated with one side of politics but still making a contribution to thinking on policy. It is good that they are being more open about their datasets, but it would be much better if they made their code available. Using tools like leaflet and ggmap instead of Carto would help with this.</p>
-<p>While it was fun to spend the day in the data-analyst’s version of a treasure chase, hopefully the next time I decide to reproduce a Grattan Institute graph common sense prevails.</p>
+<p>It was fun to spend the day in the data-analyst’s version of a treasure chase. But hopefully the next time I decide to reproduce a Grattan Institute graph common sense prevails before I go too far down the rabbit hole.</p>
 <div class="figure">
 <img src="https://imgs.xkcd.com/comics/duty_calls.png" alt="I regret nothing :)" />
 <p class="caption">I regret nothing :)</p>
 </div>
+<p><em>Disclosures: In the interest of transparency I’ll point out that I applied unsuccessfully for a job at the Grattan Institute about five years ago. One friend works as a research assistant for them on a casual basis; and there are a few friends-of-friends who work there full time, but I haven’t talked about any of this with any of them.</em></p>
 </div>
