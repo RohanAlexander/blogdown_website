@@ -218,7 +218,7 @@ inflation_rate <-
   ((inflation_data$average_index_over_year[inflation_data$quarter == "Jun-2015"] / inflation_data$average_index_over_year[inflation_data$quarter == "Jun-2004"]))
 ```
 
-This ends up with an adjustment of about 1.34. I also worked out the annual inflation rates and then chained them, and also tried just using the start and end quarter index numbers (not averaged). They came to fairly similar values, so even though I'm not exactly sure what the Grattan Institute has done here, it shouldn't matter too much.
+The inflation adjustment turned out to be about 1.34. I also worked out the annual inflation rates and then chained them, and also tried just using the start and end quarter index numbers (not averaged). They came to similar values, so even though I wasn't exactly sure what the Grattan Institute had done, I was confident that small differences wouldn't matter too much.
 
 ## Growth
 I then needed to create the annual growth rate that the Grattan Institute used (p. 34):
@@ -285,14 +285,14 @@ The values underlying the Grattan Carto map and the values that I generated are 
 
 SA3 Area  | Grattan Carto value | Grattan data value | My value
 ------------- | ------------- | ------------- | -------------
-Cairns - South  | 1.73 | 0.020 | 1.73
-Charters Towers - Ayr - Ingham  | 2.35 | 0.016 | 2.35
-Far North   | 2.66 | 0.030 | 2.66
-Outback - North  | 2.33 | 0.017 | 2.33
-Port Douglas - Daintree  | 1.73 | 0.014 | 1.73
-Tablelands (East) - Kuranda  | 2.23 | 0.016 | 2.23
+Cairns - South  | 1.73 | 2.0 | 1.73
+Charters Towers - Ayr - Ingham  | 2.35 | 1.6 | 2.35
+Far North   | 2.66 | 3.0 | 2.66
+Outback - North  | 2.33 | 1.7 | 2.33
+Port Douglas - Daintree  | 1.73 | 1.4 | 1.73
+Tablelands (East) - Kuranda  | 2.23 | 1.6 | 2.23
 
-Comparing just the values that I recreated with the values that the Grattan Institute published, it looks like in their Excel dataset they have ordered the columns for the SA3 areas and the incomes data separately instead of as a pair.
+After I compared the values that I created with the dataset that the Grattan Institute published I came up with an explanation for the issue. I think that in their Excel dataset the Grattan Institute ordered the columns for the SA3 areas and the incomes data separately instead of as a pair.
 
 ## Reconciliation
 I've reached out to the Grattan Institute and will update this post based on what they say.
