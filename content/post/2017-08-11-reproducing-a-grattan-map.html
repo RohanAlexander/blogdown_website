@@ -156,7 +156,7 @@ Australia_incomes_map</code></pre>
 </tr>
 </tbody>
 </table>
-<p>The key issue is which is right - the Carto map which is the one in the report or the dataset that they released.</p>
+<p>The key issue was whether it was the Carto map or the dataset that was wrong.</p>
 </div>
 </div>
 <div id="down-the-rabbit-hole" class="section level1">
@@ -164,13 +164,13 @@ Australia_incomes_map</code></pre>
 <p>By this stage it was after dinner, and I’d had a glass or three of wine. But the only way to work out whether it was the dataset or the map that was wrong was to recreate the dataset myself. To do this I needed:</p>
 <ul>
 <li>incomes data for financial years 2003-04 and 2014-15;</li>
-<li>an inflation rate over this time to make the 2003-04 data real;</li>
-<li>a correspondence from postcodes (which is the geography that the incomes data is available on) to the 2011 SA3 areas.</li>
+<li>an inflation rate over this time to make the 2003-04 data real; and</li>
+<li>a correspondence from postcodes to the 2011 SA3 areas.</li>
 </ul>
 <p>Without their code it would be hard to be certain, but the Grattan Institute provided enough information in the report that I was confident I could get reasonably close to what they’d done.</p>
 <div id="incomes-1" class="section level2">
 <h2>Incomes</h2>
-<p>The incomes data is from Table 8 of the 2015 tax stats which is available here: <a href="https://data.gov.au/dataset/taxation-statistics-2014-15/resource/02e58971-ddee-4f77-af15-5c45de569ed6" class="uri">https://data.gov.au/dataset/taxation-statistics-2014-15/resource/02e58971-ddee-4f77-af15-5c45de569ed6</a></p>
+<p>The incomes data is from Table 8 of the ATO’s 2015 tax stats which is available here: <a href="https://data.gov.au/dataset/taxation-statistics-2014-15/resource/02e58971-ddee-4f77-af15-5c45de569ed6" class="uri">https://data.gov.au/dataset/taxation-statistics-2014-15/resource/02e58971-ddee-4f77-af15-5c45de569ed6</a></p>
 <pre class="r"><code># Import the tax data
 tax_data &lt;- read_csv(&quot;data/taxstats2015individual08medianaveragetaxableincomestateterritorypostcode.csv&quot;, skip = 2, col_names = FALSE)
 # Remove the debris rows
@@ -366,7 +366,7 @@ head(sa3_data, n = 20)</code></pre>
 </tr>
 </tbody>
 </table>
-<p>After I compared the values that I created with the dataset that the Grattan Institute published I came up with an explanation for the issue. I think that in their Excel dataset the Grattan Institute ordered the columns for the SA3 areas and the incomes data separately instead of as a pair.</p>
+<p>After having compared my values with theirs I think that in their Excel dataset the Grattan Institute ordered the columns for the SA3 areas and the incomes data separately instead of together.</p>
 </div>
 <div id="reconciliation" class="section level2">
 <h2>Reconciliation</h2>
