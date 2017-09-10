@@ -5,7 +5,7 @@ date: '2017-09-14'
 slug: getting-started-with-latex
 categories: []
 tags: []
-draft: yes
+draft: no
 ---
 
 *This is based on notes that Zac Cranko and I put together for a presentation in 2015 and my notes for a 2016 presentation. Zac's work is used with permission.*
@@ -16,7 +16,7 @@ LaTeX makes it easier to produce papers that look great, but it can be overwhelm
 By the end you will have created an example paper and slides that include a title, author, affiliation, abstract, sections, tables, figures and references that looks like this:
 ![](/img/2017_09_10_LaTeX_first_example.png)
 
-It is best to type everything out yourself, but you can download the ultimate tex file from here: https://github.com/RohanAlexander/blogdown_website/blob/master/content/post/sa3_data.csv
+It is best to type everything out yourself, but you can download the tex file from here: https://github.com/RohanAlexander/blogdown_website/blob/master/static/img/paper.tex
 
 
 # Writing papers
