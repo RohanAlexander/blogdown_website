@@ -1,11 +1,11 @@
 ---
 title: Getting started with LaTeX
 author: Rohan
-date: '2017-09-14'
+date: '2017-09-11'
 slug: getting-started-with-latex
 categories: []
 tags: []
-draft: yes
+draft: no
 ---
 
 
@@ -15,13 +15,13 @@ draft: yes
 <h1>Introduction</h1>
 <p>LaTeX makes it easier to produce papers that look great, but it can be overwhelming at the start. These notes help you get up-and-running with LaTeX.</p>
 <p>By the end you will have created an example paper and slides that include a title, author, affiliation, abstract, sections, tables, figures and references that looks like this: <img src="/img/2017_09_10_LaTeX_first_example.png" /></p>
-<p>It is best to type everything out yourself, but you can download the ultimate tex file from here: <a href="https://github.com/RohanAlexander/blogdown_website/blob/master/content/post/sa3_data.csv" class="uri">https://github.com/RohanAlexander/blogdown_website/blob/master/content/post/sa3_data.csv</a></p>
+<p>It is best to type everything out yourself, but you can download the tex file from here: <a href="https://github.com/RohanAlexander/blogdown_website/blob/master/static/img/paper.tex" class="uri">https://github.com/RohanAlexander/blogdown_website/blob/master/static/img/paper.tex</a></p>
 </div>
 <div id="writing-papers" class="section level1">
 <h1>Writing papers</h1>
 <div id="hello-world" class="section level2">
 <h2>Hello world!</h2>
-<p>You can treat LaTeX as a mark-up language. You mark your text with commands depending on how you want it to look, and then compile it to produce an output such as a PDF. Get started by downloading LaTeX, for free, from: <a href="https://www.latex-project.org/get/" class="uri">https://www.latex-project.org/get/</a>.</p>
+<p>You can treat LaTeX as a markup language. You mark your text with commands depending on how you want it to look, and then compile it to produce an output such as a PDF. Get started by downloading LaTeX, for free, from: <a href="https://www.latex-project.org/get/" class="uri">https://www.latex-project.org/get/</a>.</p>
 <p>Use the default settings. You will likely end up installing a bunch of programs. (There is now a smaller version of MacTeX available, but for now it is probably best to stick with the original version for now.)</p>
 <p>Let’s make a document. Open ‘TeXShop’ if you’re using a Mac, and ‘TeXStudio’ if you’re using a PC.</p>
 <p>In TeXShop/TeXStudio type:</p>
@@ -29,7 +29,7 @@ draft: yes
 \begin{document}
 Hello world!
 \end{document}</code></pre>
-<p>Then click ‘Typeset’. A bunch of miscellaneous files are produced in the process of compiling. Don’t worry about these – all they do is make your directory ugly. The two important files are the tex file, which contains your mark-up, and the pdf file, which contains your output.</p>
+<p>Then click ‘Typeset’. A bunch of miscellaneous files are produced in the process of compiling. Don’t worry about these – all they do is make your directory ugly. The two important files are the tex file, which contains your markup, and the pdf file, which contains your output.</p>
 <p>Square brackets are optional in LaTeX, but it is worth specifying the paper size and the font for the <tt>documentclass</tt> command. If you wanted to specify A4 paper and 12pt text by default then our ‘Hello world!’ becomes:</p>
 <pre class="css"><code>\documentclass[a4paper, 12pt]{article}
 \begin{document}
@@ -59,18 +59,18 @@ Hello world!
 \date{14 September 2017}
 \maketitle</code></pre>
 <p>Click ‘Typeset’ and a title should be added to your paper.</p>
-<p>Add an affiliation by changing the <tt>author</tt> mark-up to:</p>
+<p>Add an affiliation by changing the <tt>author</tt> markup to:</p>
 <pre class="r"><code>\author{Rohan Alexander\\
 \textit{Australian National University}}</code></pre>
 <p>The <tt>textit</tt> command makes the text italic. You don’t need to make the affiliation italic, but many people seem to. You could make your text bold using <tt>textbf</tt>.</p>
-<p>Finally, add an acknowledgements section by changing the <tt>author</tt> mark-up to:</p>
+<p>Finally, add an acknowledgements section by changing the <tt>author</tt> markup to:</p>
 <pre class="css"><code>\author{Rohan Alexander\thanks{Thank you to my primary supervisor, John Tang. All correspondence to rohan.alexander@anu.edu.au.}\\
 \textit{Australian National University}}</code></pre>
 <p>If you don’t include <tt>date{A specific date}</tt> then LaTeX will add today’s date. If you don’t want the date then add <tt>date{}</tt> instead.</p>
 </div>
 <div id="abstract" class="section level2">
 <h2>Abstract</h2>
-<p>If you want an abstract, then LaTeX will do the formatting for you if you use the abstract tags. Add this mark-up just below <tt>maketitle</tt>:</p>
+<p>If you want an abstract, then LaTeX will do the formatting for you if you use the abstract tags. Add this markup just below <tt>maketitle</tt>:</p>
 <pre class="css"><code>\begin{abstract}
 The point of this document is to introduce you to \LaTeX. There are many examples that you can grab and use in your own work.
 \end{abstract}</code></pre>
@@ -96,7 +96,7 @@ The point of this document is to introduce you to \LaTeX. There are many example
 <div id="sections" class="section level2">
 <h2>Sections</h2>
 <p>The main section commands are: <tt>section</tt>, <tt>subsection</tt>, and <tt>subsubsection</tt>. These produce headings of decreasing importance and are numbered automatically. That can be turned off using an asterisk, for instance: <tt>section*</tt>.</p>
-<p>For now let’s add numbered introduction, model, and data sections to our document by adding the following mark-up after the abstract:</p>
+<p>For now let’s add numbered introduction, model, and data sections to our document by adding the following markup after the abstract:</p>
 <pre class="css"><code>\section{Introduction}
 \section{Model}
 \section{Data}</code></pre>
@@ -112,7 +112,7 @@ $$ \hat{\alpha} = \frac{\sum^J_{j=1}\beta_j}{\int^{\infty}_{0}f(k)} $$</code></p
 <h3>Greek, limits, infinity, and integrals</h3>
 <p>We invoked ‘maths mode’ by using double dollar signs. That put the maths that you write on its own line. If you wanted to have your maths content without breaking the line, such as <span class="math inline">\(x = 5\)</span>, then just use single dollar signs.</p>
 <p>Within maths mode you can get many greek letters by backslash followed by their name. The examples above were <tt>alpha</tt> and <tt>beta</tt>.</p>
-<p>Limits, infinity and integrals are built into LaTeX math mode, and can be access with the command <tt>lim</tt>, <tt>infty</tt>, and <tt>int</tt>. You can use accents and underbars if you need to denote what the limit refers to or upper and lower bounds. For instance, add the following mark-up underneath the formula:</p>
+<p>Limits, infinity and integrals are built into LaTeX math mode, and can be access with the command <tt>lim</tt>, <tt>infty</tt>, and <tt>int</tt>. You can use accents and underbars if you need to denote what the limit refers to or upper and lower bounds. For instance, add the following markup underneath the formula:</p>
 <pre class="css"><code>And when $\lim_{k\rightarrow0}f(k)/k = \infty$ it is the case that $\int^{\infty}_{0}f(k) = 100$.</code></pre>
 <p>When you compile this it should looks like:</p>
 <p>And when <span class="math inline">\(\lim_{k\rightarrow0}f(k)/k = \infty\)</span> it is the case that <span class="math inline">\(\int^{\infty}_{0}f(k) = 100\)</span>.</p>
@@ -225,7 +225,7 @@ We had two priorities:
 </div>
 <div id="tables" class="section level3">
 <h3>Tables</h3>
-<p>Tables are often annoying in LaTeX. Fortunately, many programs will automatically format their table outputs with LaTeX mark-up for your to copy-and-paste into your tex file, and there are websites that can help.</p>
+<p>Tables are often annoying in LaTeX. Fortunately, many programs will automatically format their table outputs with LaTeX markup for your to copy-and-paste into your tex file, and there are websites that can help.</p>
 <p>Simple tables are not a problem. For instance, add the following to your data section:</p>
 <pre class="css"><code>\begin{tabular}{ l | c || r }
   \hline
@@ -239,7 +239,7 @@ We had two priorities:
 <div id="graphs-and-pictures" class="section level3">
 <h3>Graphs and pictures</h3>
 <p>To include graphs or pictures in your document, add the file to the same folder that your tex file is in. From there you can add it. Many adjustments are possible in terms of size and layout. Fortunately, all the labelling is done for us. For instance, download the following image into the folder where your tex file is saved: <a href="https://github.com/RohanAlexander/blogdown_website/blob/master/static/img/me.png" class="uri">https://github.com/RohanAlexander/blogdown_website/blob/master/static/img/me.png</a></p>
-<p>Then add this mark-up into your data section:</p>
+<p>Then add this markup into your data section:</p>
 <pre class="css"><code>\begin{figure}[h!]
 \caption{My first image}
 \center
@@ -428,16 +428,56 @@ Income inequality in Australia is illustrated in Figure \ref{australia_map}.
 </div>
 <div id="slides" class="section level1">
 <h1>Slides</h1>
-<p>Essentially, making slides is the same as making a paper, you just need to change some aspects…</p>
+<p>Making slides is similar to writing a paper in that the markup can be the same. But you need to specify when the content of a slide should start and stop and also what the title should be.</p>
+<p>To get started, open a new file in TeXShop/TeXStudio and add the following:</p>
+<pre class="css"><code>\documentclass{beamer}
+
+\usepackage{amsmath, amsthm, amssymb, graphicx}
+
+\begin{document}
+
+\end{document}</code></pre>
+<p>You’ll notice that the only difference is that the document class has been changed to beamer.</p>
+<p>Copy the title, author and date, etc markup from your paper, and then paste it between <tt>begin{frame}</tt> and <tt>end{frame}</tt>. So your file should look like this:</p>
+<pre class="css"><code>\documentclass{beamer}
+
+\usepackage{amsmath, amsthm, amssymb, graphicx}
+
+\begin{document}
+
+\begin{frame}
+\title{An Introduction To \LaTeX}
+\author{Rohan Alexander\\
+\textit{Australian National University}}
+\date{14 September, 2017}
+\maketitle
+\end{frame}
+
+\end{document}</code></pre>
+<p>When you save and compile this you should get slides.</p>
+<p>You can add a content slide by adding the following after that first slide:</p>
+<pre class="css"><code>\begin{frame}
+\frametitle{Main results}
+\begin{itemize}
+\item I find that income inequality is increasing.
+\item This is because of slower income growth in country areas.
+\end{itemize}
+\end{frame}</code></pre>
+<p>I’ve chosen to include a list, but you could include paragraphs, or images or tables using the same markup that you have in your paper.</p>
 </div>
 <div id="misc" class="section level1">
 <h1>Misc</h1>
+<div id="learning-more-and-getting-help" class="section level2">
+<h2>Learning more and getting help</h2>
+<ul>
+<li>Check that there is an <tt>end</tt> for every <tt>begin</tt>, and similarly that all braces that are opened are also closed.</li>
+<li>Compile frequently so that you have a better idea of where the error is.</li>
+<li>Stack Overflow is helpful if you want specific changes or features.</li>
+<li>The wikibooks guide - <a href="https://en.wikibooks.org/wiki/LaTeX" class="uri">https://en.wikibooks.org/wiki/LaTeX</a> - is an excellent resource to improve your knowledge.</li>
+</ul>
+</div>
 <div id="sharelatex" class="section level2">
 <h2>ShareLaTeX</h2>
-<p>These days I more commonly use LaTeX in the cloud instead of on my local machine, via: <a href="https://www.sharelatex.com/" class="uri">https://www.sharelatex.com/</a>. The advantage is that it brings google-docs-style collaboration tools to LaTeX and doesn’t clutter your local machine.</p>
-</div>
-<div id="getting-help" class="section level2">
-<h2>Getting help</h2>
-<p>The wikibooks guide is excellent: <a href="https://en.wikibooks.org/wiki/LaTeX" class="uri">https://en.wikibooks.org/wiki/LaTeX</a></p>
+<p>These days I more commonly use LaTeX in the cloud instead of on my local computer, via: <a href="https://www.sharelatex.com/" class="uri">https://www.sharelatex.com/</a>. The advantage is that it brings google-docs-style collaboration tools.</p>
 </div>
 </div>

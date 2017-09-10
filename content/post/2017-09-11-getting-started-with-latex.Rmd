@@ -1,7 +1,7 @@
 ---
 title: Getting started with LaTeX
 author: Rohan
-date: '2017-09-14'
+date: '2017-09-11'
 slug: getting-started-with-latex
 categories: []
 tags: []
@@ -21,7 +21,7 @@ It is best to type everything out yourself, but you can download the tex file fr
 
 # Writing papers
 ## Hello world!
-You can treat LaTeX as a mark-up language. You mark your text with commands depending on how you want it to look, and then compile it to produce an output such as a PDF. Get started by downloading LaTeX, for free, from: https://www.latex-project.org/get/.
+You can treat LaTeX as a markup language. You mark your text with commands depending on how you want it to look, and then compile it to produce an output such as a PDF. Get started by downloading LaTeX, for free, from: https://www.latex-project.org/get/.
 
 Use the default settings. You will likely end up installing a bunch of programs. (There is now a smaller version of MacTeX available, but for now it is probably best to stick with the original version for now.)
 
@@ -35,7 +35,7 @@ Hello world!
 \end{document}
 ```
 
-Then click 'Typeset'. A bunch of miscellaneous files are produced in the process of compiling. Don't worry about these -- all they do is make your directory ugly. The two important files are the tex file, which contains your mark-up, and the pdf file, which contains your output.
+Then click 'Typeset'. A bunch of miscellaneous files are produced in the process of compiling. Don't worry about these -- all they do is make your directory ugly. The two important files are the tex file, which contains your markup, and the pdf file, which contains your output.
 
 Square brackets are optional in LaTeX, but it is worth specifying the paper size and the font for the <tt>documentclass</tt> command. If you wanted to specify A4 paper and 12pt text by default then our 'Hello world!' becomes:
 ```{css include = TRUE, eval = FALSE}
@@ -76,7 +76,7 @@ You can add a title, author and affiliation to your paper by adding the followin
 
 Click 'Typeset' and a title should be added to your paper.
 
-Add an affiliation by changing the <tt>author</tt> mark-up to:
+Add an affiliation by changing the <tt>author</tt> markup to:
 ```{r include = TRUE, eval = FALSE}
 \author{Rohan Alexander\\
 \textit{Australian National University}}
@@ -84,7 +84,7 @@ Add an affiliation by changing the <tt>author</tt> mark-up to:
 
 The <tt>textit</tt> command makes the text italic. You don't need to make the affiliation italic, but many people seem to. You could make your text bold using <tt>textbf</tt>.
 
-Finally, add an acknowledgements section by changing the <tt>author</tt> mark-up to:
+Finally, add an acknowledgements section by changing the <tt>author</tt> markup to:
 ```{css include = TRUE, eval = FALSE}
 \author{Rohan Alexander\thanks{Thank you to my primary supervisor, John Tang. All correspondence to rohan.alexander@anu.edu.au.}\\
 \textit{Australian National University}}
@@ -94,7 +94,7 @@ If you don't include <tt>date{A specific date}</tt> then LaTeX will add today's 
 
 
 ## Abstract
-If you want an abstract, then LaTeX will do the formatting for you if you use the abstract tags. Add this mark-up just below <tt>maketitle</tt>:
+If you want an abstract, then LaTeX will do the formatting for you if you use the abstract tags. Add this markup just below <tt>maketitle</tt>:
 ```{css include = TRUE, eval = FALSE}
 \begin{abstract}
 The point of this document is to introduce you to \LaTeX. There are many examples that you can grab and use in your own work.
@@ -128,7 +128,7 @@ The point of this document is to introduce you to \LaTeX. There are many example
 The main section commands are:
 <tt>section</tt>, <tt>subsection</tt>, and <tt>subsubsection</tt>. These produce headings of decreasing importance and are numbered automatically. That can be turned off using an asterisk, for instance: <tt>section*</tt>.
 
-For now let's add numbered introduction, model, and data sections to our document by adding the following mark-up after the abstract:
+For now let's add numbered introduction, model, and data sections to our document by adding the following markup after the abstract:
 ```{css include = TRUE, eval = FALSE}
 \section{Introduction}
 \section{Model}
@@ -153,7 +153,7 @@ We invoked 'maths mode' by using double dollar signs. That put the maths that yo
 
 Within maths mode you can get many greek letters by backslash followed by their name. The examples above were <tt>alpha</tt> and <tt>beta</tt>.
 
-Limits, infinity and integrals are built into LaTeX math mode, and can be access with the command <tt>lim</tt>, <tt>infty</tt>, and <tt>int</tt>. You can use accents and underbars if you need to denote what the limit refers to or upper and lower bounds. For instance, add the following mark-up underneath the formula:
+Limits, infinity and integrals are built into LaTeX math mode, and can be access with the command <tt>lim</tt>, <tt>infty</tt>, and <tt>int</tt>. You can use accents and underbars if you need to denote what the limit refers to or upper and lower bounds. For instance, add the following markup underneath the formula:
 ```{css include = TRUE, eval = FALSE}
 And when $\lim_{k\rightarrow0}f(k)/k = \infty$ it is the case that $\int^{\infty}_{0}f(k) = 100$.
 ```
@@ -292,7 +292,7 @@ We had two priorities:
 ```
 
 ### Tables
-Tables are often annoying in LaTeX. Fortunately, many programs will automatically format their table outputs with LaTeX mark-up for your to copy-and-paste into your tex file, and there are websites that can help.
+Tables are often annoying in LaTeX. Fortunately, many programs will automatically format their table outputs with LaTeX markup for your to copy-and-paste into your tex file, and there are websites that can help.
 
 Simple tables are not a problem. For instance, add the following to your data section:
 ```{css include = TRUE, eval = FALSE}
@@ -312,7 +312,7 @@ But it gets complicated. If you commonly use tables then it is easier to get you
 To include graphs or pictures in your document, add the file to the same folder that your tex file is in. From there you can add it. Many adjustments are possible in terms of size and layout. Fortunately, all the labelling is done for us. For instance, download the following image into the folder where your tex file is saved: 
 https://github.com/RohanAlexander/blogdown_website/blob/master/static/img/me.png
 
-Then add this mark-up into your data section:
+Then add this markup into your data section:
 ```{css include = TRUE, eval = FALSE}
 \begin{figure}[h!]
 \caption{My first image}
@@ -520,7 +520,7 @@ Income inequality in Australia is illustrated in Figure \ref{australia_map}.
 ```
 
 # Slides
-Making slides is similar to writing a paper in that the mark-up can be the same. But you need to specify when the content of a slide should start and stop and also what the title should be.
+Making slides is similar to writing a paper in that the markup can be the same. But you need to specify when the content of a slide should start and stop and also what the title should be.
 
 To get started, open a new file in TeXShop/TeXStudio and add the following:
 
@@ -536,7 +536,7 @@ To get started, open a new file in TeXShop/TeXStudio and add the following:
 
 You'll notice that the only difference is that the document class has been changed to beamer.
 
-Copy the title, author and date, etc mark-up from your paper, and then paste it between <tt>begin{frame}</tt> and <tt>end{frame}</tt>. So your file should look like this:
+Copy the title, author and date, etc markup from your paper, and then paste it between <tt>begin{frame}</tt> and <tt>end{frame}</tt>. So your file should look like this:
 
 ```{css include = TRUE, eval = FALSE}
 \documentclass{beamer}
@@ -570,7 +570,7 @@ You can add a content slide by adding the following after that first slide:
 \end{frame}
 ```
 
-I've chosen to include a list, but you could include paragraphs, or images or tables using the same mark-up that you have in your paper.
+I've chosen to include a list, but you could include paragraphs, or images or tables using the same markup that you have in your paper.
 
 # Misc
 ## Learning more and getting help
