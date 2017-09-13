@@ -428,6 +428,7 @@ Save it as first_bibliography.bib in the same folder as your tex file. Then add 
 
 And add the following at the end of your document, on the line above <tt>end{document}</tt>.
 ```{css include = TRUE, eval = FALSE}
+\bibliographystyle{apalike}
 \bibliography{first_bibliography}
 ```
 
@@ -512,7 +513,7 @@ We had two priorities:
 
 Income inequality in Australia is illustrated in Figure \ref{australia_map}.
 
-\bibliographystyle{unsrt}
+\bibliographystyle{apalike}
 \bibliography{first_bibliography.bib}
 
 
