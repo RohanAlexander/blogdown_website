@@ -340,8 +340,7 @@ Income inequality in Australia is illustrated in Figure \ref{australia_map}.
 <p>Save it as first_bibliography.bib in the same folder as your tex file. Then add the following at the end of the paragraphs in your Introduction:</p>
 <pre class="css"><code>\cite{DeWitt2000}</code></pre>
 <p>And add the following at the end of your document, on the line above <tt>end{document}</tt>.</p>
-<pre class="css"><code>\bibliographystyle{apalike}
-\bibliography{first_bibliography}</code></pre>
+<pre class="css"><code>\bibliography{first_bibliography}</code></pre>
 <p>Then typeset as BibTeX, (you’ll only need to do this once each time you update your bib file), and then typeset as normal with LaTeX.</p>
 <p>Your tex file should look like this:</p>
 <pre class="css"><code>\documentclass[a4paper, 12pt]{article}
@@ -420,7 +419,7 @@ We had two priorities:
 
 Income inequality in Australia is illustrated in Figure \ref{australia_map}.
 
-\bibliographystyle{apalike}
+\bibliographystyle{unsrt}
 \bibliography{first_bibliography.bib}
 
 
