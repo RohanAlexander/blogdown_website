@@ -1,14 +1,14 @@
 ---
 title: Getting started with LaTeX
 author: Rohan
-date: '2017-09-11'
+date: '2017-09-14'
 slug: getting-started-with-latex
 categories: []
 tags: []
 draft: no
 ---
 
-*This is based on notes that Zac Cranko and I put together for a presentation in 2015 and my notes for a 2016 presentation. Zac's work is used with permission.*
+*Thank you to Janet Bradly and Maria Racionero for their support of this workshop. These notes are based on ones prepared by Zac Cranko and I for a presentation in 2015 and those that I put together for a 2016 presentation. Zac's work is used with permission.*
 
 # Introduction
 LaTeX makes it easier to produce papers that look great, but it can be overwhelming at the start. These notes help you get up-and-running with LaTeX. 
@@ -178,13 +178,21 @@ You can also make a call to mathcal, for instance in naming sets <tt>$\mathcal{A
 
 ### Fractions
 Fractions are built into math mode using <tt>frac{}{}</tt> and you can nest them if you need to. For instance add the following to your paper:
-```{r include = TRUE, eval = FALSE}
+```{css include = TRUE, eval = FALSE}
 It can be surprising when you first learn that $\frac{\frac{x}{y}}{y} = \frac{x}{y^2}$.
 ```
 
 This should compile to:
 
 It can be surprising when you first learn that $\frac{\frac{x}{y}}{y} = \frac{x}{y^2}$.
+
+Be careful when using brackets and fractions because sometimes the sizes need to be aligned. You can do it manually, but alternative specify left and right, for instance, compare with and without:
+```{r include = TRUE, eval = FALSE}
+$$\left(\frac{\frac{x}{y}}{y}\right) = (\frac{\frac{x}{y}}{y})$$.
+```
+which compiles to:
+$$\left(\frac{\frac{x}{y}}{y}\right) = (\frac{\frac{x}{y}}{y})$$.
+
 
 ### Theorems, definitions and proofs
 Theorems and proofs draw on the amsthm package that was loaded earlier. You need to declare the name that you'll use to refer to it in the preamble. After that you can call a theorem, proposition, description, whatever it was you defined, throughout the document.

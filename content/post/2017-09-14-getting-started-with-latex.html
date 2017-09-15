@@ -1,7 +1,7 @@
 ---
 title: Getting started with LaTeX
 author: Rohan
-date: '2017-09-11'
+date: '2017-09-14'
 slug: getting-started-with-latex
 categories: []
 tags: []
@@ -10,7 +10,7 @@ draft: no
 
 
 
-<p><em>This is based on notes that Zac Cranko and I put together for a presentation in 2015 and my notes for a 2016 presentation. Zac’s work is used with permission.</em></p>
+<p><em>Thank you to Janet Bradly and Maria Racionero for their support of this workshop. These notes are based on ones prepared by Zac Cranko and I for a presentation in 2015 and those that I put together for a 2016 presentation. Zac’s work is used with permission.</em></p>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>LaTeX makes it easier to produce papers that look great, but it can be overwhelming at the start. These notes help you get up-and-running with LaTeX.</p>
@@ -128,9 +128,12 @@ $$ \hat{\alpha} = \frac{\sum^J_{j=1}\beta_j}{\int^{\infty}_{0}f(k)} $$</code></p
 <div id="fractions" class="section level3">
 <h3>Fractions</h3>
 <p>Fractions are built into math mode using <tt>frac{}{}</tt> and you can nest them if you need to. For instance add the following to your paper:</p>
-<pre class="r"><code>It can be surprising when you first learn that $\frac{\frac{x}{y}}{y} = \frac{x}{y^2}$.</code></pre>
+<pre class="css"><code>It can be surprising when you first learn that $\frac{\frac{x}{y}}{y} = \frac{x}{y^2}$.</code></pre>
 <p>This should compile to:</p>
 <p>It can be surprising when you first learn that <span class="math inline">\(\frac{\frac{x}{y}}{y} = \frac{x}{y^2}\)</span>.</p>
+<p>Be careful when using brackets and fractions because sometimes the sizes need to be aligned. You can do it manually, but alternative specify left and right, for instance, compare with and without:</p>
+<pre class="r"><code>$$\left(\frac{\frac{x}{y}}{y}\right) = (\frac{\frac{x}{y}}{y})$$.</code></pre>
+<p>which compiles to: <span class="math display">\[\left(\frac{\frac{x}{y}}{y}\right) = (\frac{\frac{x}{y}}{y})\]</span>.</p>
 </div>
 <div id="theorems-definitions-and-proofs" class="section level3">
 <h3>Theorems, definitions and proofs</h3>
