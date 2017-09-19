@@ -9,7 +9,7 @@ title = "Who Voted for Federation?"
 summary = "Understanding who voted for the Federation of Australia, and why the outcome of several critical elections changed, allows us to better appreciate why voters decided to add a level of government when only a couple of generations earlier they insisted on political independence from Britain."
 
 # Optional image to display on homepage (relative to `static/img/` folder).
-image_preview = "_DSC4116.jpg"
+image_preview = "_DSC3816.jpg"
 
 # Tags: can be used for filtering projects.
 # Example: `tags = ["machine-learning", "deep-learning"]`
@@ -23,7 +23,7 @@ math = false
 
 # Optional featured image (relative to `static/img/` folder).
 [header]
-image = "_DSC4116.jpg"
+image = "_DSC3816.jpg"
 #caption = "A galah :bird:"
 
 +++

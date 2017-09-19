@@ -1,0 +1,174 @@
+---
+title: Did parliament determine Australian government spending between 1901 and 1980?
+author: Rohan
+date: '2017-09-19'
+slug: does-parliament-determine-government-spending
+categories: []
+tags: []
+draft: no
+bibliography: bibliography.bib
+image_preview: "DSCF2343.jpg"
+summary: "I analyse Australian Hansard records and government spending to see how much of an impact a government has on government spending."
+
+---
+
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Australian federal government spending is expected to account for about 26 per cent of GDP in 2016-17, and over the past 40 years it has averaged 24.9 per cent (2016-17 Budget Paper No.1, Table 10). Government spending is an important part of GDP but we do not have a good understanding of how governments decide on their eventual spending decision, or even how much of an impact a government has on government spending. Anecdotally, how much the government actually affects government spending has an obvious answer. But no one seems to be able to agree on what it is. That is what this paper is about.</p>
+<p>From a political institutions perspective, a strict separation of powers suggests that Australia’s parliament would be the preeminent institution determining government spending. Hansard provides a record of what was said in parliament. So, it should be possible to analyse Hansard to see if parliament does in fact determine government spending. In Australia, the members of the executive – cabinet – constitutionally must also be members of the legislative – parliament. So even if spending were determined by the executive then Hansard records should have explanatory power.</p>
+<p>A literature in political economy examines government spending as an outcome of politicians trying to, for instance: get re-elected, fulfil campaign pledges, or express partisan preferences (for a summary see, for instance, <span class="citation">Benassy-Quere et al. (2010, 9)</span>). And it is undeniable that politicians in a liberal democracy have considerable scope to allocate spending at the level of hundreds-of-thousands, or millions, of dollars. But it is not so clear that they have an impact on spending on a macroeconomic level. In order for that political economy literature on why politicians affect government spending to be important, it must be established whether they even affect it at a significant level.</p>
+<p>This paper is at the intersection of positive economics, in that it looks at the impact of policy on the economy, and political economy, in that it examines how those policy decisions are made. In this paper, I analyse ‘who said what’ in Australia’s parliament, how politicians voted and then use this to explain disaggregated government spending. I use Hansard as the record of what was said in parliament and who said it. Hansard provides a record of all debates in the Commonwealth parliament from its establishment in 1901. The stability of Australia’s government over this period, and the division of power between the federal and state governments make Australia especially well-disposed for analysis. Also, <span class="citation">Butlin, Barnard, and Pincus (1982, 4)</span> argue, Australian governments have played a larger role ‘throughout virtually the whole of Australian history in all decision-making processes’ and have been a ‘much more significant’ influence on the economy than in comparable countries.</p>
+<p>Using natural language processing, specifically latent Dirichlet allocation, I attribute a topic to each statement in Hansard. I then classify whether the statement is objective or subjective, and then determine whether subjective statements are positive or negative. This creates a dataset of the opinions that parliamentarians held on various topics over time. From other sources, I add information about the role of the parliamentarian at the time they made that statement. <strong>[Expand/amend as completed.]</strong></p>
+<p>Government spending data is available from various sources and at various levels of disaggregation. Initially, I just examine total government spending, but I also disaggregate the spending into various areas. <strong>[Expand/amend as completed.]</strong></p>
+<p>The contribution of this paper is to bring separate threads in existing economics literatures to analyse whether what is said in parliament affects government spending. If parliament in a liberal democracy is essentially just a talk shop with little actual impact on government spending, then analysis of government spending would need to focus on other institutions. Alternatively, if parliament plays an important role, then further analysis of how these government spending decisions occur would be needed. Either way, there are implications for our understanding of the institutions that determine about a quarter of GDP.</p>
+</div>
+<div id="literature" class="section level1">
+<h1>Literature</h1>
+<p>Although I have not been able to find exactly similar analysis, this paper fits into the traditions of both positive economics and political economy and builds on existing economics literatures. Albeit not for this purpose, the Hansard records of other countries have been analysed using natural language processing, and the Australian Hansard record has been examined by hand. Similarly, while there has been much analysis of the impact of different political institutions and the efficiency of government spending, little of it has gone into detail of what happens within parliament.</p>
+<div id="hansard-analysis" class="section level2">
+<h2>Hansard analysis</h2>
+<p><span class="citation">Whyte (2014)</span> uses Canadian and UK Hansard records to analyse whether parliamentary disruptions have increased in those countries since 1994. <span class="citation">Whyte (2014)</span> uses Python to process Hansard XML files and then counts the frequency of interruptions by the members of parliament or calls for order from the speaker. (Using similar methods <span class="citation">Willis (2017)</span> examines the UK Climate Change Bill to understand how politicians understand and articulate climate change.) <span class="citation">Whyte (2014)</span> is limited to frequency comparisons because the digitised Canadian Hansard was, at that time, only available to 1993. Subsequently the Canadian Hansard was digitised, as described by <span class="citation">Beelen et al. (2017)</span>.</p>
+<p>That digitisation of the Canadian Hansard allowed <span class="citation">Whyte (2017)</span> to examine the same question over a longer time-frame – 1926 to 2015 – and with more sophisticated methods. <span class="citation">Whyte (2017)</span> codes Hansard so that a speech fragment is one of five states: a government backbencher speaking; a minister speaking; an opposition member speaking; an interruption; or a statement by the Speaker of the House. The state of a speech fragment is then considered as an explanatory variable for the state of the next speech fragment in a multinomial logit model. The dataset has 3.1 million speeches of which about five per cent are interruptions. Future work will extend the analysis to analyse tone and context.</p>
+<p><span class="citation">Duthie, Budzynska, and Reed (2016)</span> analyse UK Hansard records using natural language processing to examine which politicians made supportive or aggressive statements toward other politicians between 1979 and 1990. For each statement four tags were applied: source-person, target-person, support; attack. <span class="citation">Duthie, Budzynska, and Reed (2016)</span> uses the Stanford Named Entity Recognizer to extract statements that contain names, organisations and locations, and then the Stanford Part-of-Speech Tagger to extract statements that contain pronouns. <span class="citation">Duthie, Budzynska, and Reed (2016)</span> add domain specific rules to account for the language nuances of the parliament, and then use the Stanford classifier library, which uses supervised learning techniques, and the Sentiment Word Lexicon which contains 2,006 words tagged as positive and 4,738 words tagged as negative to analyse sentiment. They find that changes in language are associated with periods of political change, for instance when there was infighting in the Labour Party and when Margaret Thatcher became prime minister.</p>
+<p><span class="citation">Grijzenhout, Marx, and Jijkoun (2014)</span> examine various natural language processing options in the context of the Dutch House of Representatives. After hand coding a corpus, they compare the results of various automated processes. They find that machine-learning algorithms perform the best. They provide a helpful summary of many different processes</p>
+<p>More generally, Hansard records has been analysed for various purposes. For instance, <span class="citation">Rasiah (2010)</span> examines Hansard records for the Australian House of Representatives to examine whether politicians attempted to evade questions about Iraq during February and March 2003. <span class="citation">Willis (2017)</span> looks at a corpus of 97,000 words from UK Hansard records to try to understand how politicians understand climate change. <span class="citation">Sealey and Bates (2016)</span> examine the responses of British Prime Ministers to find that their focus on cognitive and communicative processes. <span class="citation">Graham (2016)</span> examines Hansard records for New Zealand between 1890 and 1950 to analyse unparliamentary language. And <span class="citation">Wilkerson, Smith, and Stramp (2015)</span> looks for similarities in how legislation is written in the US.</p>
+</div>
+<div id="government-spending" class="section level2">
+<h2>Government spending</h2>
+<div id="international" class="section level3">
+<h3>International</h3>
+<p><span class="citation">Frey (1978, 5)</span> lamented that ‘(e)conomics and politics depend closely and intimately on one another in a modern society. Is this fact duly accounted for in current economic thought?’. Since then there has been a push to integrate politics into economic research, and this paper fits into that broad research agenda.</p>
+<p>Generally, from a positive economics approach, there has been much work explaining aggregate or disaggregated government spending on the basis of various explanatory variables. For instance, <span class="citation">L. D. Matteo and Matteo (1998)</span> explain Canadian government expenditure on health care over the period 1965 to 1991 as a function of variables such as provincial income, proportion of the population over 65 and federal transfers. Similarly, <span class="citation">Mauro (1998)</span> examines whether corruption can explain government expenditure across a cross-section of counties.</p>
+<p>In a similar style, although from a political economy approach, <span class="citation">Persson, Roland, and Tabellini (2007)</span>, <span class="citation">Tabellini (2000)</span> and <span class="citation">Persson and Tabellini (2000)</span> link the level of government spending with political economy considerations such as electoral rules and political institutions. They are interested in how fiscal policy, in terms of the features of government spending and taxation, is determined. Electoral rules and political institutions should impact the number of parties, which should influence government formation and fiscal policy. The focus of political economy on institutions is a feature of <span class="citation">North (1985)</span>, and of course, more recently, <span class="citation">Acemoglu, Johnson, and Robinson (2005, 392)</span> conduct their analysis within the following framework: political institutions and the distribution of resources imply economic and political institutions, which in turn imply economic performance and the distribution of resources.</p>
+</div>
+<div id="australia" class="section level3">
+<h3>Australia</h3>
+<p><span class="citation">Coulson (2016)</span> has a similar interest to the broad question in this paper: to what extent is parliament a genuine actor in the policy process. To help answer this <span class="citation">Coulson (2016)</span> examines budget estimates committees using Hansard records for three Australian states: Queensland; Victoria; and South Australia, over five budget years: 2011-12 to 2015-16. The analysis is done by hand which limits the extent of the records that could be examined in a reasonable time. If parliament, or in this case, budget estimates committees (which are made up of parliamentarians), are important then the topics that the parliamentarians discuss should be related to the budget documents that were ostensibly the focus of the committee at that time. <span class="citation">Coulson (2016)</span> finds that approximately half of the topics raised by the parliamentarians were related to the budget documents being examined and that the parliamentarians focussed more on the budget measures than government policy or operational matters.</p>
+<p>This paper also fits into an existing literature on examining the role of government in Australia’s economic history. For instance, <span class="citation">Boot (1998)</span>, <span class="citation">Frost (2000)</span> and <span class="citation">Boot (2000)</span> focus on the role of government in the 1800s. While <span class="citation">Boot (1998)</span> and <span class="citation">Frost (2000)</span> disagree about the specific contribution, they agree that political concerns did influence government decision-making, and it was not just economic efficiency.</p>
+</div>
+</div>
+</div>
+<div id="data" class="section level1">
+<h1>Data</h1>
+<div id="government-spending-1" class="section level2">
+<h2>Government spending</h2>
+<p><a href="http://budget.gov.au/2015-16/content/myefo/html/16_appendix_d.htm" class="uri">http://budget.gov.au/2015-16/content/myefo/html/16_appendix_d.htm</a></p>
+<p>National accounts go back to 1972 on ABS website <a href="http://www.abs.gov.au/AUSSTATS/abs@.nsf/second+level+view?ReadForm&amp;prodno=5206.0&amp;viewtitle=Australian%20National%20Accounts:%20National%20Income,%20Expenditure%20and%20Product~Mar%202017~Latest~07/06/2017">http://www.abs.gov.au/AUSSTATS/abs@.nsf/second+level+view?ReadForm&amp;prodno=5206.0&amp;viewtitle=Australian%20National%20Accounts:%20National%20Income,%20Expenditure%20and%20Product~Mar%202017~Latest~07/06/2017</a>&amp;&amp;tabname=Past%20Future%20Issues&amp;prodno=5206.0&amp;issue=Mar%202017&amp;num=&amp;view=&amp;</p>
+<p>Input output tables go back to 1958–59 <a href="http://www.abs.gov.au/ausstats/abs@.nsf/PrimaryMainFeatures/5209.0.55.001?OpenDocument" class="uri">http://www.abs.gov.au/ausstats/abs@.nsf/PrimaryMainFeatures/5209.0.55.001?OpenDocument</a></p>
+<p>Whole bunch of data at the RBA: ‘Australian Economic Statistics 1949-1950 to 1996-1997’ <a href="http://www.rba.gov.au/statistics/frequency/occ-paper-8.html" class="uri">http://www.rba.gov.au/statistics/frequency/occ-paper-8.html</a></p>
+<p>N . G. Butlin ‘Australian Domestic Product, Investment and Foreign Borrowing 1861 - 1938/39’ 1962.</p>
+</div>
+<div id="hansard" class="section level2">
+<h2>Hansard</h2>
+<p>In 1901 six former British colonies federated to form Australia. The first parliament sat on 9 May 1901, and a written record of what has been said in parliament is available since that time. Based on the UK parliament, this record is called Hansard.</p>
+<p>The mission statement of Hansard is: ‘To provide an accurate, substantially verbatim account of the proceedings of the parliament and its committees which, while usually correcting obvious mistakes, neither adds to nor detracts from the meaning of the speech or the illustration of the argument.’ (<a href="http://www.aph.gov.au/Parliamentary_Business/Hansard" class="uri">http://www.aph.gov.au/Parliamentary_Business/Hansard</a>, accessed 12 September 2017).</p>
+<p>While Hansard is not necessarily verbatim, it should be close enough for the purposes of this paper. For instance, <span class="citation">Mollin (2008)</span> found that in the case of the UK Hansard the differences would only affect specialised linguistic analysis. <span class="citation">Edwards (2016)</span> examines the UK, Australia and New Zealand and finds that changes are usually made by those responsible for creating the Hansard record, instead of the parliamentarians. This also provides reassurance that any differences from the verbatim record should not be meaningful for this paper.</p>
+<p>The Australian Parliament House makes Hansard available online (<a href="http://www.aph.gov.au/Parliamentary_Business/Hansard" class="uri">http://www.aph.gov.au/Parliamentary_Business/Hansard</a>), Tim Sherratt at the University of Canberra has scraped the website and makes the entire Hansard for 1901 to 1980 available in XML files (<a href="http://historichansard.net/" class="uri">http://historichansard.net/</a>).</p>
+<p>After downloading and doing some brief cleaning some initial summary statistics can be created for Hansard.</p>
+<p>Graph: Records are available for X days per year. Speakers: Total number of uniques speakers, (cummulative over time?). Topics: Total number of topics as identified by Titles.</p>
+<p>Words: Total number of words?</p>
+<p>In the ten years from Federation, did they talk about and resolve whatever it was that were the reasons for Federation?</p>
+<p>‘Customs and excise duties were to become almost the federal government’s sole revnue source for the first 10 years of Federation, and a major source in the years leading to World War 2. They were the subject of intense debate in teh parliament.’ <span class="citation">Wilson (2015, 333)</span>. Is this true? Etc etc, there’s other claims about debate on this page.</p>
+<div id="topic-analysis" class="section level3">
+<h3>Topic analysis</h3>
+<p>Separate Question Time from the rest.</p>
+</div>
+<div id="sentiment-analysis" class="section level3">
+<h3>Sentiment analysis</h3>
+</div>
+</div>
+</div>
+<div id="analysis" class="section level1">
+<h1>Analysis</h1>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-AcemogluJohnsonRobinson2005">
+<p>Acemoglu, Daron, Simon Johnson, and James A Robinson. 2005. “Institutions as a Fundamental Cause of Long-Run Growth.” In <em>Handbook of Economic Growth</em>, edited by Philippe Aghion and Steven N Durlauf, 385–472. Elsevier.</p>
+</div>
+<div id="ref-BeelenEtc2017">
+<p>Beelen, Kaspar, Timothy Alberdingk Thim, Christopher Cochrane, Kees Halvemaan, Graeme Hirst, Michael Kimmins, Sander Lijbrink, et al. 2017. “Digitization of the Canadian Parliamentary Debates.” <em>Canadian Journal of Political Science</em>, 1–16.</p>
+</div>
+<div id="ref-Benassy-Quere2010">
+<p>Benassy-Quere, Agnes, Benoit Coeure, Pierre Jacquet, and Jean Pisani-Ferry. 2010. <em>Economic Policy: Theory and Practice</em>. New York: Oxford University Press.</p>
+</div>
+<div id="ref-Boot1998">
+<p>Boot, H M. 1998. “Government and the Colonial Economies.” <em>Australian Economic History Review</em> 38 (1): 74–101.</p>
+</div>
+<div id="ref-Boot2000">
+<p>———. 2000. “Government and the Colonial Economies: A Reply to Frost.” <em>Australian Economic History Review</em> 40 (1): 86–91.</p>
+</div>
+<div id="ref-ButlinBarnardPincus1982">
+<p>Butlin, N. G., A Barnard, and J. J. Pincus. 1982. <em>Government and Capitalism: Public and Private Choice in Twentieth Century Australia</em>. George Allen &amp; Unwin.</p>
+</div>
+<div id="ref-Coulson2016">
+<p>Coulson, Kylie. 2016. “Budget Scrutiny in Australian State Parliaments.” <em>Australasian Parliamentary Review</em> 31 (2): 103–16.</p>
+</div>
+<div id="ref-Duthie2016">
+<p>Duthie, Rory, Katarzyna Budzynska, and Chris Reed. 2016. “Mining Ethos in Political Debate.” In <em>Computational Models of Argument</em>, edited by P Baroni, TF Gordon, T Scheffler, and M Stede, 287:299–310.</p>
+</div>
+<div id="ref-Edwards2016">
+<p>Edwards, Cecilia. 2016. “The Political Consequences of Hansard Editorial Policies: The Case for Greater Transparency.” <em>Australasian Parliamentary Review</em> 31 (2): 145–60.</p>
+</div>
+<div id="ref-Frey1978">
+<p>Frey, Bruno. 1978. <em>Modern Political Economy</em>. Martin Robertson; Company.</p>
+</div>
+<div id="ref-Frost2000">
+<p>Frost, Lionel. 2000. “Government and the Colonial Economies: An Alternative View.” <em>Australian Economic History Review</em> 40 (1): 71–85.</p>
+</div>
+<div id="ref-Graham2016">
+<p>Graham, Ruth. 2016. “Withdraw and Apologise: A Diachronic Study of Unparliamentary Language in the New Zealand Parliament, 1890–1950.” PhD thesis, Victoria University of Wellington.</p>
+</div>
+<div id="ref-GrijzenhoutMarxJijkoun2014">
+<p>Grijzenhout, Steven, Maarten Marx, and Valentin Jijkoun. 2014. “Sentiment Analysis in Parliamentary Proceedings.” In <em>From Text to Political Positions : Text Analysis Across Disciplines</em>, edited by Bertie Kaal, Isa Maks, and Annemarie van Elfrinkhof, 117–34. John Benjamins Publishing Company.</p>
+</div>
+<div id="ref-DiMatteoDiMatteo1998">
+<p>Matteo, Livio Di, and Rosanna Di Matteo. 1998. “Evidence on the Determinants of Canadian Provincial Government Health Expenditures: 1965 – 1991.” <em>Journal of Health Economics</em> 17: 211–28.</p>
+</div>
+<div id="ref-Mauro1998">
+<p>Mauro, Paolo. 1998. “Corruption and the Composition of Government Expenditure.” <em>Journal of Public Economics</em> 69 (2): 263–79.</p>
+</div>
+<div id="ref-Mollin2008">
+<p>Mollin, Sandra. 2008. “The Hansard Hazard: Gauging the Accuracy of British Parliamentary Transcripts.” <em>Corpora</em> 2 (2): 187–210.</p>
+</div>
+<div id="ref-North1985">
+<p>North, Douglass. 1985. “The Growth of Government in the United States: An Economic Historian’s Perspective.” <em>Journal of Public Economics</em> 28: 383–99.</p>
+</div>
+<div id="ref-PerssonTabellini2010">
+<p>Persson, Torsten, and Guido Tabellini. 2000. <em>Political Economics Explaining Economic Policy</em>. The MIT Press.</p>
+</div>
+<div id="ref-PerssonRolandTabellini2007">
+<p>Persson, Torsten, Gerard Roland, and Guido Tabellini. 2007. “Electoral Rules and Government Spending in Parliamentary Democracies.” <em>Quarterly Journal of Political Science</em> 2 (2): 155–88.</p>
+</div>
+<div id="ref-Rasiah2010">
+<p>Rasiah, Parameswary. 2010. “A Framework for the Systematic Analysis of Evasion in Parliamentary Discourse.” <em>Journal of Pragmatics</em> 42: 664–80.</p>
+</div>
+<div id="ref-SealeyBates2016">
+<p>Sealey, Alison, and Stephen Bates. 2016. “Prime Ministerial Self-Reported Actions in Prime Minister’s Questions 1979–2010: A Corpus-Assisted Analysis.” <em>Journal of Pragmatics</em> 104: 18–31.</p>
+</div>
+<div id="ref-Tabellini2000">
+<p>Tabellini, Guido. 2000. “Constitutional Determinants of Government Spending.” <em>CESifo Working Paper Series</em>.</p>
+</div>
+<div id="ref-Whyte2014">
+<p>Whyte, Tanya. 2014. “Some Honourable Members: A Quantitative Analysis of Parliamentary Decorum in Canada and the United Kingdom.” <em>Paper Presented to the 23rd World Congress of Political Science, 23 July 2014, Montreal Quebec, Canada</em>.</p>
+</div>
+<div id="ref-Whyte2017">
+<p>———. 2017. “Oh, Oh! Modeling Parliamentary Interruptions in Canada, 1926-2015.” <em>Paper Presented at Canadian Political Science Association Annual Conference, Ryerson University, Toronto, 27 May – 2 June, 2017</em>.</p>
+</div>
+<div id="ref-WilkersonSmithStramp2015">
+<p>Wilkerson, John, David Smith, and Nick Stramp. 2015. “Tracing the Flow of Policy Ideas in Legislatures: A Text Reuse Approach.” <em>American Journal of Political Science</em> 59 (4): 943–56.</p>
+</div>
+<div id="ref-Willis2017">
+<p>Willis, Rebecca. 2017. “Taming the Climate? Corpus Analysis of Politicians’ Speech on Climate Change.” <em>Environmental Politics</em> 26 (2): 212–31.</p>
+</div>
+<div id="ref-Wilson2015">
+<p>Wilson, John K. 2015. “Government and the Evolution of Public Policy.” In <em>The Cambridge Economic History of Australia</em>, edited by Simon Wille and Glenn Withers, 330–50. Cambridge University Press.</p>
+</div>
+</div>
+</div>
