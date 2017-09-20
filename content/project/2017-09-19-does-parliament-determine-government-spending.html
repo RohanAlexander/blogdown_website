@@ -1,7 +1,7 @@
 ---
 title: Did parliament determine Australian government spending between 1901 and 1980?
 author: Rohan
-date: '2017-09-19'
+date: '2017-09-20'
 slug: does-parliament-determine-government-spending
 categories: []
 tags: []
@@ -22,7 +22,7 @@ summary: "I analyse Australian Hansard records and government spending to see ho
 <p>This paper is at the intersection of positive economics, in that it looks at the impact of policy on the economy, and political economy, in that it examines how those policy decisions are made. In this paper, I analyse ‘who said what’ in Australia’s parliament, how politicians voted and then use this to explain disaggregated government spending. I use Hansard as the record of what was said in parliament and who said it. Hansard provides a record of all debates in the Commonwealth parliament from its establishment in 1901. The stability of Australia’s government over this period, and the division of power between the federal and state governments make Australia especially well-disposed for analysis. Also, <span class="citation">Butlin, Barnard, and Pincus (1982, 4)</span> argue, Australian governments have played a larger role ‘throughout virtually the whole of Australian history in all decision-making processes’ and have been a ‘much more significant’ influence on the economy than in comparable countries.</p>
 <p>Using natural language processing, specifically latent Dirichlet allocation, I attribute a topic to each statement in Hansard. I then classify whether the statement is objective or subjective, and then determine whether subjective statements are positive or negative. This creates a dataset of the opinions that parliamentarians held on various topics over time. From other sources, I add information about the role of the parliamentarian at the time they made that statement. <strong>[Expand/amend as completed.]</strong></p>
 <p>Government spending data is available from various sources and at various levels of disaggregation. Initially, I just examine total government spending, but I also disaggregate the spending into various areas. <strong>[Expand/amend as completed.]</strong></p>
-<p>The contribution of this paper is to bring separate threads in existing economics literatures to analyse whether what is said in parliament affects government spending. If parliament in a liberal democracy is essentially just a talk shop with little actual impact on government spending, then analysis of government spending would need to focus on other institutions. Alternatively, if parliament plays an important role, then further analysis of how these government spending decisions occur would be needed. Either way, there are implications for our understanding of the institutions that determine about a quarter of GDP.</p>
+<p>The contribution of this paper is to bring separate threads in existing economics literatures to analyse whether what is said in parliament affects government spending. If parliament in a liberal democracy is essentially just a ‘talk shop’ with little actual impact on government spending, then analysis of government spending would need to focus on other institutions. Alternatively, if parliament plays an important role, then further analysis of how these government spending decisions occur would be needed. Either way, there are implications for our understanding of the institutions that determine about a quarter of GDP.</p>
 </div>
 <div id="literature" class="section level1">
 <h1>Literature</h1>
@@ -54,37 +54,33 @@ summary: "I analyse Australian Hansard records and government spending to see ho
 <h1>Data</h1>
 <div id="government-spending-1" class="section level2">
 <h2>Government spending</h2>
-<p><a href="http://budget.gov.au/2015-16/content/myefo/html/16_appendix_d.htm" class="uri">http://budget.gov.au/2015-16/content/myefo/html/16_appendix_d.htm</a></p>
-<p>National accounts go back to 1972 on ABS website <a href="http://www.abs.gov.au/AUSSTATS/abs@.nsf/second+level+view?ReadForm&amp;prodno=5206.0&amp;viewtitle=Australian%20National%20Accounts:%20National%20Income,%20Expenditure%20and%20Product~Mar%202017~Latest~07/06/2017">http://www.abs.gov.au/AUSSTATS/abs@.nsf/second+level+view?ReadForm&amp;prodno=5206.0&amp;viewtitle=Australian%20National%20Accounts:%20National%20Income,%20Expenditure%20and%20Product~Mar%202017~Latest~07/06/2017</a>&amp;&amp;tabname=Past%20Future%20Issues&amp;prodno=5206.0&amp;issue=Mar%202017&amp;num=&amp;view=&amp;</p>
-<p>Input output tables go back to 1958–59 <a href="http://www.abs.gov.au/ausstats/abs@.nsf/PrimaryMainFeatures/5209.0.55.001?OpenDocument" class="uri">http://www.abs.gov.au/ausstats/abs@.nsf/PrimaryMainFeatures/5209.0.55.001?OpenDocument</a></p>
-<p>Whole bunch of data at the RBA: ‘Australian Economic Statistics 1949-1950 to 1996-1997’ <a href="http://www.rba.gov.au/statistics/frequency/occ-paper-8.html" class="uri">http://www.rba.gov.au/statistics/frequency/occ-paper-8.html</a></p>
-<p>N . G. Butlin ‘Australian Domestic Product, Investment and Foreign Borrowing 1861 - 1938/39’ 1962.</p>
+<p><strong>[Expand/amend - need longer and disaggregated series - ABS Year Book.]</strong></p>
+<p>Government spending from RBA (<a href="http://www.rba.gov.au/statistics/frequency/occ-paper-8.html" class="uri">http://www.rba.gov.au/statistics/frequency/occ-paper-8.html</a>): <img src="/img/2017_09_20-gov_spending_vs_year.png" /></p>
 </div>
 <div id="hansard" class="section level2">
 <h2>Hansard</h2>
-<p>In 1901 six former British colonies federated to form Australia. The first parliament sat on 9 May 1901, and a written record of what has been said in parliament is available since that time. Based on the UK parliament, this record is called Hansard.</p>
+<p><strong>[Expand/amend.]</strong> In 1901 six former British colonies federated to form Australia. The first parliament sat on 9 May 1901, and a written record of what has been said in parliament is available since that time. Based on the UK parliament, this record is called Hansard.</p>
 <p>The mission statement of Hansard is: ‘To provide an accurate, substantially verbatim account of the proceedings of the parliament and its committees which, while usually correcting obvious mistakes, neither adds to nor detracts from the meaning of the speech or the illustration of the argument.’ (<a href="http://www.aph.gov.au/Parliamentary_Business/Hansard" class="uri">http://www.aph.gov.au/Parliamentary_Business/Hansard</a>, accessed 12 September 2017).</p>
 <p>While Hansard is not necessarily verbatim, it should be close enough for the purposes of this paper. For instance, <span class="citation">Mollin (2008)</span> found that in the case of the UK Hansard the differences would only affect specialised linguistic analysis. <span class="citation">Edwards (2016)</span> examines the UK, Australia and New Zealand and finds that changes are usually made by those responsible for creating the Hansard record, instead of the parliamentarians. This also provides reassurance that any differences from the verbatim record should not be meaningful for this paper.</p>
 <p>The Australian Parliament House makes Hansard available online (<a href="http://www.aph.gov.au/Parliamentary_Business/Hansard" class="uri">http://www.aph.gov.au/Parliamentary_Business/Hansard</a>), Tim Sherratt at the University of Canberra has scraped the website and makes the entire Hansard for 1901 to 1980 available in XML files (<a href="http://historichansard.net/" class="uri">http://historichansard.net/</a>).</p>
 <p>After downloading and doing some brief cleaning some initial summary statistics can be created for Hansard.</p>
-<p>Graph: Records are available for X days per year. Speakers: Total number of uniques speakers, (cummulative over time?). Topics: Total number of topics as identified by Titles.</p>
-<p>Words: Total number of words?</p>
-<p>In the ten years from Federation, did they talk about and resolve whatever it was that were the reasons for Federation?</p>
-<p>‘Customs and excise duties were to become almost the federal government’s sole revnue source for the first 10 years of Federation, and a major source in the years leading to World War 2. They were the subject of intense debate in teh parliament.’ <span class="citation">Wilson (2015, 333)</span>. Is this true? Etc etc, there’s other claims about debate on this page.</p>
 <div id="topic-analysis" class="section level3">
 <h3>Topic analysis</h3>
-<p>Separate Question Time from the rest.</p>
+<p><strong>[TBD.]</strong></p>
 </div>
 <div id="sentiment-analysis" class="section level3">
 <h3>Sentiment analysis</h3>
+<p><strong>[TBD.]</strong></p>
 </div>
 </div>
 </div>
 <div id="analysis" class="section level1">
 <h1>Analysis</h1>
+<p><strong>[TBD.]</strong></p>
 </div>
 <div id="conclusion" class="section level1">
 <h1>Conclusion</h1>
+<p><strong>[TBD.]</strong></p>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1>References</h1>
@@ -166,9 +162,6 @@ summary: "I analyse Australian Hansard records and government spending to see ho
 </div>
 <div id="ref-Willis2017">
 <p>Willis, Rebecca. 2017. “Taming the Climate? Corpus Analysis of Politicians’ Speech on Climate Change.” <em>Environmental Politics</em> 26 (2): 212–31.</p>
-</div>
-<div id="ref-Wilson2015">
-<p>Wilson, John K. 2015. “Government and the Evolution of Public Policy.” In <em>The Cambridge Economic History of Australia</em>, edited by Simon Wille and Glenn Withers, 330–50. Cambridge University Press.</p>
 </div>
 </div>
 </div>
