@@ -7,7 +7,7 @@ categories: []
 tags: []
 draft: no
 bibliography: bibliography.bib
-image_preview: "DSCF2343.jpg"
+image_preview: "DSCF2355.jpg"
 summary: "I analyse Australian Hansard records and government spending to see how much of an impact a government has on government spending."
 
 ---

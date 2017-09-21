@@ -12,31 +12,37 @@ draft: no
 
 *A few notes and photos from a Trump rally in Indiana earlier this week. The focus is on whether Trump 'could' win the election in November. In the interest of transparency, it's worth acknowledging that I didn't think Trump could win the Republican nomination. Thanks to Monica for helpful edits.*
 
-Donald Trump is an improved politician, but it's unlikely to be enough. He has harnessed fervent anti-Clinton sentiment amongst Republicans. But he does not have time to build the coalitions usually needed to win a US presidential election.
+![Children at the Trump rally in Indiana.](/img/2016_07_17_Children.jpg)
 
-![Children at the Trump rally in Indiana.](/img/Trump_1.png)
+Donald Trump is an improved politician, but it's unlikely to be enough. He has harnessed fervent anti-Clinton sentiment amongst Republicans. But he does not have time to build the coalitions usually needed to win a US presidential election.
 
 At a recent rally in Westfield, Indiana, Trump was comparatively structured and measured. There was less name-calling and little of the ludicrous hypotheticals that characterized a January rally in Iowa.[^1] [^2] Some things haven't changed: the crowd is still overwhelmingly white; 'Storm Trumpers' in ill-fitting suits are still on patrol; and Trump still lies.[^3] But he is no longer politically inexperienced, and neither were the Trump supporters that I talked to. 
 
-The Republican Governor of Indiana, Mike Pence, introduced Trump at the rally. Pence was later announced as Trump's running mate. If Trump is to win the election then he needs to easily win states such as Indiana, where Republicans have only lost once in the past fifty years.[^4] Even though the outcome in Indiana should not be in doubt, Hoosier Republicans are important. Trump needs fired-up volunteers to travel to neighboring Ohio, a crucial swing state, and Trump needs money. But mostly, Trump needs friends.
+![Media at the Trump rally in Indiana.](/img/2016_07_17_TrumpMedia.jpg)
 
-![Trump speaking at the rally in Indiana.](/img/Trump_2.png)
+The Republican Governor of Indiana, Mike Pence, introduced Trump at the rally. Pence was later announced as Trump's running mate. If Trump is to win the election then he needs to easily win states such as Indiana, where Republicans have only lost once in the past fifty years.[^4] Even though the outcome in Indiana should not be in doubt, Hoosier Republicans are important. Trump needs fired-up volunteers to travel to neighboring Ohio, a crucial swing state, and Trump needs money. But mostly, Trump needs friends.
 
 Despite Trump's improvement as a politician, winning a presidential election usually requires constructing coalitions. Often this is the work of a lifetime. For instance, Richard Ben Cramer describes how, beginning in his 20s, George H. W. Bush built a Christmas card list. By the time he was Vice President 30,000 'friends' received an annual Christmas card from him.[^5] The Clintons have been building coalitions since their 20s too. Part of Trump's appeal is that he has only been a politician for a year, but his campaign is inefficient without coalitions.
 
-![The Indiana State Capitol, 20 miles south of the rally.](/img/Trump_3.png)
+![Trump speaking at the rally in Indiana.](/img/2016_07_17_TrumpSpeaking.png)
 
 The most precious resource in any election is a candidate's time. The US presidential election magnifies this because of the scrutiny, the electoral college, and the size of the country. Yes, a candidate needs to raise money, motivate supporters, and convince undecided voters. But to stand a chance of winning, a candidate usually also needs coalitions that can do all this for them. Without these, there is more pressure on Trump.
 
 Trump has also only recently put modern campaign essentials in place. For instance, just a few months ago Trump described the use of data in politics as 'overrated'.[^6] But he seems to have changed his mind: Trump collected and verified the phone numbers of those who attended the rally in Indiana. Texts and phone calls will be critical to the effort of getting his supporters to turn out to vote in November. Trump is also now sending emails but it takes time to build a high-quality list. 
 
-![A Trump supporter at the rally in Indiana.](/img/Trump_4.png)
+![A Trump supporter at the rally in Indiana.](/img/2016_07_17_TrumpCap.jpg)
 
 The Trump supporters that I spoke to were unfailingly polite. They conscientiously thanked the many law enforcement personnel, and there were many military veterans in the audience. No one supported every aspect of Trump's platform, but this is not unusual in political campaigns. There was some anti-Muslim sentiment, and a few conspiracy theories. Political correctness was a recurrent issue, as was declining US influence in the world. Although Trump uses 'The Wall' as a call-and-response device (Trump: 'Who's going to pay for the wall?' Crowd: 'Mexico'), anti-Mexican sentiment seemed to be driven more by a perceived willingness of Hispanics to work for low wages than racism.
 
 The Republicans I talked to were united only in being against Clinton; but similarly many Democrats seem united only in wanting to stop Trump. How such a campaign translates into votes is unclear. While there don't seem to be many undecided voters, there are many dejected ones. It will be interesting to see turnout estimates in swing states. Would you stand in line to vote against, rather than for, a candidate?
 
+![Trump speaking at rally in Indiana.](/img/2016_07_17_TrumpAndPhone.jpg)
+
+
 In just one year Trump has changed US politics. He is quickly improving as a politician, but remains divisive. Is Trump the moment, or just of the moment? Although he probably does not have enough time to do the work that would allow him to win in November,[^7] the impact of his campaign will be felt for many years.
+
+![Trump supporter at rally in Indiana.](/img/2016_07_17_TrumpVisor.jpg)
+
 
 [^1]: Go to https://www.rohanalexander.com/2016/01/14/notes-and-photos-from-iowa/ for that write-up.
 
