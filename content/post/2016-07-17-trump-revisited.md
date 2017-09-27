@@ -41,8 +41,6 @@ The Republicans I talked to were united only in being against Clinton; but simil
 
 In just one year Trump has changed US politics. He is quickly improving as a politician, but remains divisive. Is Trump the moment, or just of the moment? Although he probably does not have enough time to do the work that would allow him to win in November,[^7] the impact of his campaign will be felt for many years.
 
-![Trump supporter at rally in Indiana.](/img/2016_07_17_TrumpVisor.jpg)
-
 
 [^1]: Go to https://www.rohanalexander.com/2016/01/14/notes-and-photos-from-iowa/ for that write-up.
 

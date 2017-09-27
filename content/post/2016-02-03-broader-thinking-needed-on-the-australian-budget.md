@@ -11,8 +11,6 @@ draft: no
 
 The Treasury Secretary, and many others, bemoan the wasted years of the mining boom. Most agree that Australia should have more to show for what was the most significant boom since Federation. But the boom is over. And a fixation on budget surpluses means that we are missing an opportunity to make up for it. Australia's credit rating is a strength that we should take advantage of. The Commonwealth should be borrowing to fund infrastructure investment.
 
-![Borrow for a house or eat more avos?](/img/IMG_1360.jpg)
-
 Despite what many think, 'deficit' is not a dirty word, and like many other aspects of life, context matters. For instance, students are rarely chastised for taking a HELP loan. This is because that debt is being used to buy an education, which helps in the long term. It's the same for the economy.
 
 In a recent speech to the Sydney Institute the Treasury Secretary said that the Federal Government must exercise ‘expenditure restraint (that) will allow resources that would otherwise go to interest payments to be allocated to other priorities...’.[^1] But why should we lash expenditure restraint to interest payments? The Secretary explains that his rationale for this comes from the lessons of the late '80s and early '90s. But interest rates are no longer at such high levels. If the costs of borrowing have changed, then should we still dismiss its benefits?
