@@ -12,6 +12,9 @@ summary: "I analyse Australian Hansard records and government spending to see ho
 
 ---
 
+**Work in progress**
+
+*Thank you very much to John Tang, Zach Ward and Bob Gregory for their help and guidance.*
 
 # Introduction
 Australian federal government spending is expected to account for about 26 per cent of GDP in 2016-17, and over the past 40 years it has averaged 24.9 per cent (2016-17 Budget Paper No.1, Table 10). Government spending is an important part of GDP but we do not have a good understanding of how governments decide on their eventual spending decision, or even how much of an impact a government has on government spending. Anecdotally, how much the government actually affects government spending has an obvious answer. But no one seems to be able to agree on what it is. That is what this paper is about.
@@ -46,7 +49,7 @@ That digitisation of the Canadian Hansard allowed @Whyte2017 to examine the same
  
 @GrijzenhoutMarxJijkoun2014 examine various natural language processing options in the context of the Dutch House of Representatives. After hand coding a corpus, they compare the results of various automated processes. They find that machine-learning algorithms perform the best. They provide a helpful summary of many different processes
 
-More generally, Hansard records has been analysed for various purposes. For instance, @Rasiah2010 examines Hansard records for the Australian House of Representatives to examine whether politicians attempted to evade questions about Iraq during February and March 2003. @Willis2017 looks at a corpus of 97,000 words from UK Hansard records to try to understand how politicians understand climate change. @SealeyBates2016 examine the responses of British Prime Ministers to find that their focus on cognitive and communicative processes. @Graham2016 examines Hansard records for New Zealand between 1890 and 1950 to analyse unparliamentary language. And @WilkersonSmithStramp2015 looks for similarities in how legislation is written in the US.
+More generally, Hansard records have been analysed for various purposes. For instance, @Rasiah2010 examines Hansard records for the Australian House of Representatives to examine whether politicians attempted to evade questions about Iraq during February and March 2003. @GansLeigh2012 examined Australian Hansard records by hand to associate mentions by politicians of certain public intellectuals with neutral or positive sentiment. @Willis2017 looks at a corpus of 97,000 words from UK Hansard records to try to understand how politicians understand climate change. @SealeyBates2016 examine the responses of British Prime Ministers to find that their focus on cognitive and communicative processes. @Graham2016 examines Hansard records for New Zealand between 1890 and 1950 to analyse unparliamentary language. And @WilkersonSmithStramp2015 looks for similarities in how legislation is written in the US.
 
 
 

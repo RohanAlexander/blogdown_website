@@ -1,6 +1,6 @@
 baseurl = "https://rohanalexander.com/"
 title = "Rohan Alexander"
-copyright = "Thanks to Yihui Xie, Amber Thomas, and Alison Presmanes Hill"
+copyright = "&copy; 2017 Rohan Alexander"
 theme = "hugo-academic"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
@@ -29,7 +29,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "portrait.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "rohan.alexander@anu.edu.au"
-  address = "Room 2033, HW Arndt Bld (25A), Australian National University"
+  address = "Room 1029, Copland Bld, Australian National University"
   office_hours = ""
   phone = ""
   skype = ""
