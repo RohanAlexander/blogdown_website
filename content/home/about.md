@@ -37,7 +37,7 @@ weight = 1
 
 # Biography
 
-I am a PhD student in the Research School of Economics at the Australian National University where I research Australian economic history and am a tutor for Macroeconomics 3. My panel is [John Tang](https://sites.google.com/site/jptang/) (primary supervisor), [Zach Ward](https://sites.google.com/site/zachaward/) and [Martine Mariotti](https://www.cbe.anu.edu.au/about/staff-directory/?profile=Martine-Mariotti) and [Tim Hatton](https://sites.google.com/site/timhattonwebsite/). As part of my project with Tim I create, merge and analyse Federation-era census and election datasets.
+I am a PhD student in the Research School of Economics at the Australian National University where I research Australian economic history. My panel is [John Tang](https://sites.google.com/site/jptang/) (primary supervisor), [Zach Ward](https://sites.google.com/site/zachaward/) and [Martine Mariotti](https://www.cbe.anu.edu.au/about/staff-directory/?profile=Martine-Mariotti) and [Tim Hatton](https://sites.google.com/site/timhattonwebsite/). As part of my project with Tim I create, merge and analyse Federation-era census and election datasets.
 
 I am a co-founder of Petit Poll, which uses a statistical model to produce Australian political polls from biased samples that we collect ourselves. And I am a consultant at Grosvenor Management Consulting, where I analyse public-sector procurement in Australia and New Zealand.
 
