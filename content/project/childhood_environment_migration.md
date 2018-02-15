@@ -3,10 +3,10 @@
 date = "2017-06-27"
 
 # Project title.
-title = "What impact did childhood environment have for US migrants?"
+title = "Age at arrival and assimilation in the United States during the Age of Mass Migration"
 
 # Project summary to display on homepage.
-summary = "By linking data on Ellis Island arrivals with the 1940 US Census Zach Ward and I estimate the importance of childhood environment for immigrant outcomes."
+summary = "By linking data on Ellis Island arrivals with the 1940 US Census Zach Ward and I estimate the effect of age at arrival for immigrant outcomes in the US."
 
 
 # Optional image to display on homepage (relative to `static/img/` folder).
@@ -30,4 +30,6 @@ image = "DSC_1229.png"
 
 +++
 
-By linking data on Ellis Island arrivals with the 1940 US Census Zach Ward and I estimate the importance of childhood environment for immigrant outcomes. Looking only at male siblings, a brother who arrived in the US at a younger age had higher adult incomes than their brother who arrived at an older age. The high return to human capital acquired during childhood contrasts with a low rate of assimilation during this period. We further show that the quality of childhood environment is a primary determinant of a source country’s skill gap with natives, and may be more important than other factors like selection.
+By linking data on Ellis Island arrivals with the 1940 US Census [Zach Ward](https://sites.google.com/site/zachaward/) and I estimate the effect of age at arrival for immigrant outcomes in the US. Using within-family variation, Zach and I find that arriving at an older age, or having more childhood exposure to the European environment, led to a larger negative wage gap compared to the native born. Those who arrived as infants had no income gap relative to natives, in contrast to those who arrived as teenagers. Therefore, a key determinant of immigrant outcomes during the Age of Mass Migration was the country of residence during critical periods of childhood development.
+
+This paper has been conditionally accepted at The Journal of Economic History.
