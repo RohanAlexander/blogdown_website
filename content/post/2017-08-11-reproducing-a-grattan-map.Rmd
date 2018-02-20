@@ -18,6 +18,8 @@ library(knitr)
 
 *Thank you to Monica for her helpful edits.*
 
+*Geoffrey Liu found an error in how I deal with the postcodes data that I haven't fixed yet.*
+
 # Introduction
 The Grattan Institute is an Australian think tank that produces reports about public policy. Last week they released ['Regional patterns of Australia's economy and population'](https://grattan.edu.au/report/regional-patterns-of-australias-economy-and-population/). That report looks into the differences between geographic areas across various economic and demographic variables. It includes interactive maps made using Carto. The Grattan Institute also released the datasets that underpin the report's maps and graphs.
 
