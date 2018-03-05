@@ -42,3 +42,5 @@ I am a PhD student in the Research School of Economics at the Australian Nationa
 I am a co-founder of Petit Poll, which uses a statistical model to produce Australian political polls from biased samples that we collect ourselves. And I am a consultant at Grosvenor Management Consulting, where I analyse public-sector procurement in Australia and New Zealand.
 
 Outside of university and work I enjoy cycling and running.
+
+A CV can be found [here](/pdf/2018-03-05-cv_rohan_alexander.pdf).
