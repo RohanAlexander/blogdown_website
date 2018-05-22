@@ -18,7 +18,7 @@ weight = 4
 
 **Consultant**,   April 2017 -- *Current*
 
-I am employed at Grosvenor to complete a specific project for the European Commission relating to public procurement in Australia and New Zealand. This has involved: identifying data sources; preparing for data acquisition; supporting the IT team in data acquisition; assisting with data validation; and helping with survey design and follow-up.
+I am employed at Grosvenor to complete a specific project for the European Commission relating to public procurement in Australia, New Zealand and Thailand. This has involved: identifying data sources; preparing for data acquisition; supporting the IT team in data acquisition; assisting with data validation; and helping with survey design and follow-up.
 
 
 ## Petit Poll

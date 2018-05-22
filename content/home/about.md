@@ -14,7 +14,7 @@ weight = 1
   interests = [
     "Australian economic history",
     "Political data analysis",
-    "Labour force participation"
+    "Migration"
   ]
 
 # List your qualifications (such as academic degrees).
