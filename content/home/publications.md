@@ -1,18 +1,37 @@
 +++
-# An example of using the custom widget to create your own homepage section.
-# To create more sections, duplicate this file and edit the values below as desired.
+# Publications widget.
+# This widget displays all publications from `content/publications/`.
 
 date = "2016-04-20T00:00:00"
 draft = false
 
 title = "Publications"
 subtitle = ""
-widget = "custom"
+widget = "projects_but_for_publications"
 
 # Order that this section will appear in.
 weight = 2
 
-+++
+# View.
+# Customize how projects are displayed.
+# Legend: 0 = list, 1 = cards.
+view = 1
 
-Alexander, R., and Ward, Z., 'Age At Arrival and Assimilation In The Age Of Mass Migration', *The Journal of Economic History*, forthcoming. 
+# Filter toolbar.
+# Add or remove as many filters (`[[filter]]` instances) as you like.
+# Use "*" tag to show all projects or an existing tag prefixed with "." to filter by specific tag.
+# To remove toolbar, delete/comment all instances of `[[filter]]` below.
+# [[filter]]
+#   name = "All"
+#   tag = "*"
+
+# [[filter]]
+#   name = "Current"
+#   tag = ".current"
+
+# [[filter]]
+#   name = "Other"
+#   tag = ".other"
+
++++
 
