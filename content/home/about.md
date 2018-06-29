@@ -37,10 +37,12 @@ weight = 1
 
 # Biography
 
-I am a PhD student in the Research School of Economics at the Australian National University where I research Australian economic history. My panel is [John Tang](https://sites.google.com/site/jptang/) (primary supervisor), [Zach Ward](https://sites.google.com/site/zachaward/) and [Martine Mariotti](https://www.cbe.anu.edu.au/about/staff-directory/?profile=Martine-Mariotti) and [Tim Hatton](https://sites.google.com/site/timhattonwebsite/).
+I am a PhD student in the Research School of Economics at the Australian National University where I research Australian economic history. My panel is [John Tang](https://sites.google.com/site/jptang/) (primary supervisor), [Martine Mariotti](https://www.cbe.anu.edu.au/about/staff-directory/?profile=Martine-Mariotti) (chair), and [Zach Ward](https://sites.google.com/site/zachaward/).
 
-I am a co-founder of Petit Poll, which uses a statistical model to produce Australian political polls from biased samples that we collect ourselves. And I am a consultant at Grosvenor Management Consulting, where I analyse public-sector procurement in Australia and New Zealand.
+I am a co-founder of [Petit Poll](https://www.petitpoll.com/), which uses a statistical model to produce Australian political polls from biased samples that we collect. And I consult at [Grosvenor Management Consulting](https://www.grosvenor.com.au/) on public-sector procurement data.
 
 Outside of university and work I enjoy cycling and running.
 
-A CV can be found [here](/pdf/2018-03-05-cv_rohan_alexander.pdf).
+A general CV can be found [here](/pdf/2018-05-30-cv-professional-RohanAlexander.pdf) and an academic CV can be found [here](/pdf/2018-05-30-cv-academic-Rohan_Alexander.pdf).
+
+

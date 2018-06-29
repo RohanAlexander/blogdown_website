@@ -14,11 +14,12 @@ weight = 4
 
 +++
 
+
 ## Grosvenor Management Consulting
 
 **Consultant**,   April 2017 -- *Current*
 
-I am employed at Grosvenor to complete a specific project for the European Commission relating to public procurement in Australia, New Zealand and Thailand. This has involved: identifying data sources; preparing for data acquisition; supporting the IT team in data acquisition; assisting with data validation; and helping with survey design and follow-up.
+I consult at Grosvenor on a casual basis to complete a specific project for the European Commission relating to public procurement. This has involved: identifying data sources; preparing for and supporting data acquisition; conducting data quality confirmation; helping with survey design and validation; and some managerial responsibilities.
 
 
 ## Petit Poll
@@ -43,4 +44,4 @@ As a co-founder and director of GoCampaign (later GoCatalyze), a data analysis t
 ## Reserve Bank of Australia
 **Cadet/Analyst/Senior Analyst**, February 2009 -- December 2011
 
-I conducted research on topics related to banknotes, for example an econometrics-based analysis of banknote demand during the financial crisis. I was also responsible for the creation and analysis of datasets, and gave banknote-related presentations to the public.
+I researched topics related to banknotes, for example an econometric analysis of banknote demand during the 2007/08 financial crisis. I was also responsible for creating and analysing counterfeit banknote datasets, and gave banknote-related presentations to the public.
