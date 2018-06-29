@@ -1,8 +1,8 @@
 ---
-title: Getting started with topic modelling
+title: Getting started with topic modelling - theory
 author: Rohan
 date: '2018-06-29'
-slug: getting-started-with-topic-modelling
+slug: getting-started-with-topic-modelling-theory
 categories: []
 tags: []
 draft: no
