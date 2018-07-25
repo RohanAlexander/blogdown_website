@@ -44,4 +44,4 @@ As a co-founder and director of GoCampaign (later GoCatalyze), a data analysis t
 ## Reserve Bank of Australia
 **Cadet/Analyst/Senior Analyst**, February 2009 -- December 2011
 
-I researched topics related to banknotes, for example an econometric analysis of banknote demand during the 2007/08 financial crisis. I was also responsible for creating and analysing counterfeit banknote datasets, and gave banknote-related presentations to the public.
+I researched topics related to banknotes, for example an econometric analysis of banknote demand during the 2007-08 financial crisis. I was also responsible for creating and analysing counterfeit banknote datasets, and gave banknote-related presentations to the public.
