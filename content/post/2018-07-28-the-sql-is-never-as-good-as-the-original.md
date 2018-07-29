@@ -8,12 +8,14 @@ tags: []
 draft: no
 ---
 
+*Thanks to Monica for the title.*
+
 # Introduction
-SQL is a popular way of working with data. You can do a lot of analysis just using SQL, but even having a working knowledge of SQL increases the number of datasets that you can get data from to then analyse in other languages such as R or Python. You can even use SQL within RStudio if you want. The following are a few notes to help future-Rohan when he needs to use SQL. A worked example with a sample of the Hansard data will be included in a future post. Thanks to Monica for the title.
+SQL is a popular way of working with data. You can do a lot just using SQL, but even having a working knowledge of SQL increases the number of datasets that you can get data from to then analyse with other tools such as R or Python. You can use SQL within RStudio if you want. The following are a few notes to help future-Rohan when he needs to use SQL. A worked example with a sample of the Hansard data will be included in a future post. 
 
-SQL is fairly straightforward if you've used mutate, filter and join in the R tidyverse as the concepts (and sometimes even the verb) are the same. In that case, half the battle is getting used to the terminology, and the other half is getting on top of the order of operations. 
+SQL is fairly straightforward if you've used mutate, filter and join in the R tidyverse as the concepts (and sometimes even the verb) are the same. In that case, half the battle is getting used to the terminology, and the other half is getting on top of the order of operations because SQL can be a tad pedantic. 
 
-SQL ("see-quell" or "S.Q.L." - both camps seem fairly insistent on their way...) is a way of working with data from relational databases. A relational database is just a collection of at least one table, where a table is a data organized into rows and columns. If there's more than one table in the database, then there should be some column that links them. It feels a bit like HTML/CSS in terms of being halfway between markup and programming. One fun aspect is that line spaces mean nothing: include them or don't, but always end a SQL command in a semicolon;
+SQL ("see-quell" or "S.Q.L." - both camps seem fairly insistent on their way...) is used with relational databases. A relational database is just a collection of at least one table, and a table is just some data organized into rows and columns. If there's more than one table in the database, then there should be some column that links them. Using it feels a bit like HTML/CSS in terms of being halfway between markup and programming. One fun aspect is that line spaces mean nothing: include them or don't, but always end a SQL command in a semicolon;
 
 # Creating a table
 Create an empty table of three columns of type: int, text, int:
@@ -67,7 +69,7 @@ SELECT *
   FROM table_name
     WHERE column3 > 30;
 ```
-All the usual operators are fine here: =, !=, >, <, >=, <=. Just make sure the condition evaluates to true/false.
+All the usual operators are fine with WHERE: =, !=, >, <, >=, <=. Just make sure the condition evaluates to true/false.
 
 See the rows that are pretty close to a criteria:
 ```{sql, include = TRUE, eval = FALSE}
@@ -92,13 +94,13 @@ SELECT *
     WHERE column2 IS NOT NULL;
 ```
 
-This too is wild: There's an underlying ordering for number, date and text fields which allows you to use BETWEEN on all those, not just numeric! The following looks for text that starts with a letter between A and M (not including M) so would match 'Gough Menzies', but not 'Sir Gough Menzies'! 
+This too is wild: There's an underlying ordering build into number, date and text fields that allows you to use BETWEEN on all those, not just numeric! The following looks for text that starts with a letter between A and M (not including M) so would match 'Gough Menzies', but not 'Sir Gough Menzies'! 
 ```{sql, include = TRUE, eval = FALSE}
 SELECT *
   FROM table_name
     WHERE column2 BETWEEN 'A' AND 'M';
 ```
-If you look for a numeric (as opposed to text) then it is inclusive!
+If you look for a numeric (as opposed to text) then BETWEEN is inclusive.
 
 Combine conditions with AND (both must be true to be returned) or OR (at least one must be true):
 ```{sql, include = TRUE, eval = FALSE}
@@ -108,7 +110,7 @@ SELECT *
     AND column3 = 32;
 ```
 
-Can order the result:
+You can order the result:
 ```{sql, include = TRUE, eval = FALSE}
 SELECT *
   FROM table_name
@@ -157,32 +159,32 @@ DELETE FROM table_name
   WHERE column3 IS NULL;
 ```
 
-Add an alias to a column name (this just shows in the outputs)
+Add an alias to a column name (this just shows in the output):
 ```{sql, include = TRUE, eval = FALSE}
 SELECT column2 AS 'Names'
   FROM table_name;
 ```
 
 # Summarising data
-We can use COUNT(), SUM(), MAX()/MIN(), AVG() and ROUND() in the place of summarise in R. COUNT() counts the number of rows that are not empty for some column or all using *:
+We can use COUNT, SUM, MAX, MIN, AVG and ROUND in the place of summarise in R. COUNT counts the number of rows that are not empty for some column by passing the column name, or for all using *:
 ```{sql, include = TRUE, eval = FALSE}
 SELECT COUNT(*) 
   FROM table_name;
 ```
 
-You can SUM(), MAX(), MIN(), and AVG() the values in a column:
+Similarly, pass a column to SUM, MAX, MIN, and AVG:
 ```{sql, include = TRUE, eval = FALSE}
 SELECT SUM(column1) 
   FROM table_name;
 ```
 
-ROUND() takes a column and a integer to specify how many decimal places:
+ROUND takes a column and an integer to specify how many decimal places:
 ```{sql, include = TRUE, eval = FALSE}
 SELECT ROUND(column1, 0)
   FROM table_name;
 ```
 
-SELECT and GROUP BY is similar to group_by() in R:
+SELECT and GROUP BY is similar to group_by in R:
 ```{sql, include = TRUE, eval = FALSE}
 SELECT column3, COUNT(*)
   FROM table_name
@@ -200,7 +202,6 @@ SELECT *
   JOIN table2_name
     ON table1_name.colum1 = table2_name.column1;
 ```
+Be careful to specify the matching columns using dot notation. Primary key columns uniquely identify rows and are: 1) never NULL; 2) unique; 3) only one column per table. A primary key can be primary in one table and foreign in another. Unique columns have a different value for every row and there can be many in one table.
 
-UNION is the equivalent of cbind.
-
-Primary key columns uniquely identify rows and are: 1) never NULL; 2) unique; 3) only one column per table. A primary key can be primary in one table and foreign in another. Unique columns have a different value for every row and there can be many in one table. 
+UNION is the equivalent of cbind if the tables are already fairly similar.
