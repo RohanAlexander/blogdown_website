@@ -1,6 +1,6 @@
 baseurl = "https://rohanalexander.com/"
 title = "Rohan Alexander"
-copyright = "&copy; 2017 Rohan Alexander"
+copyright = "&copy; 2018 Rohan Alexander"
 theme = "hugo-academic"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
