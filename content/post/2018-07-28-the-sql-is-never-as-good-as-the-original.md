@@ -9,7 +9,7 @@ draft: no
 ---
 
 # Introduction
-SQL is a popular way of working with data. You can do a lot of analysis just using SQL, but even having a working knowledge of SQL increases the number of datasets that you can get data from to then analyse in other languages such as R or Python. You can even use SQL within RStudio if you want. The following are a few notes to help future-Rohan when he needs to use SQL. A worked example with a sample of the Hansard data will be included in a future post.
+SQL is a popular way of working with data. You can do a lot of analysis just using SQL, but even having a working knowledge of SQL increases the number of datasets that you can get data from to then analyse in other languages such as R or Python. You can even use SQL within RStudio if you want. The following are a few notes to help future-Rohan when he needs to use SQL. A worked example with a sample of the Hansard data will be included in a future post. Thanks to Monica for the title.
 
 SQL is fairly straightforward if you've used mutate, filter and join in the R tidyverse as the concepts (and sometimes even the verb) are the same. In that case, half the battle is getting used to the terminology, and the other half is getting on top of the order of operations. 
 
