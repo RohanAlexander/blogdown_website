@@ -13,6 +13,9 @@ draft: no
 # Introduction
 SQL is a popular way of working with data. You can do a lot just using SQL, but even having a working knowledge of SQL increases the number of datasets that you can get data from to then analyse with other tools such as R or Python. You can use SQL within RStudio if you want. The following are a few notes to help future-Rohan when he needs to use SQL. A worked example with a sample of the Hansard data will be included in a future post. 
 
+<img src="/post/2018-07-28-the-sql-is-never-as-good-as-the-original_files/2018_07_28-XKCD1409.png" alt="XKCD comic about SQL from https://xkcd.com/1409/" width="80%"/>
+(Source: https://xkcd.com/1409/)
+
 SQL is fairly straightforward if you've used mutate, filter and join in the R tidyverse as the concepts (and sometimes even the verb) are the same. In that case, half the battle is getting used to the terminology, and the other half is getting on top of the order of operations because SQL can be a tad pedantic. 
 
 SQL ("see-quell" or "S.Q.L." - both camps seem fairly insistent on their way...) is used with relational databases. A relational database is just a collection of at least one table, and a table is just some data organized into rows and columns. If there's more than one table in the database, then there should be some column that links them. Using it feels a bit like HTML/CSS in terms of being halfway between markup and programming. One fun aspect is that line spaces mean nothing: include them or don't, but always end a SQL command in a semicolon;
