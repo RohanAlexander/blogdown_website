@@ -11,7 +11,7 @@ draft: no
 *Thanks to Monica for the title.*
 
 # Introduction
-SQL is a popular way of working with data. You can do a lot just using SQL, but even having a working knowledge of SQL increases the number of datasets that you can get data from to then analyse with other tools such as R or Python. You can use SQL within RStudio if you want. The following are a few notes to help future-Rohan when he needs to use SQL. A worked example with a sample of the Hansard data will be included in a future post. 
+SQL is a popular way of working with data. Advanced users probably do a lot with it alone, but even just having a working knowledge of SQL has increased the number of datasets that I can get data from to then analyse with other tools such as R or Python. You can use SQL within RStudio if you want. The following are a few notes to help future-Rohan when he needs to use SQL. A worked example with a sample of the Hansard data will be included in a future post. 
 
 <img src="/post/2018-07-28-the-sql-is-never-as-good-as-the-original_files/2018_07_28-XKCD1409.png" alt="XKCD comic about SQL from https://xkcd.com/1409/" width="80%"/>
 (Source: https://xkcd.com/1409/)
