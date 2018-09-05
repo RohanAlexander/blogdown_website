@@ -1,5 +1,5 @@
 ---
-title: Analysis of Australian Hansard
+title: Exploring Australia's Hansard (1901 - 2017)
 author: Rohan
 date: '2017-09-20'
 slug: australian-hansard
@@ -8,10 +8,22 @@ tags: []
 draft: no
 bibliography: bibliography.bib
 image_preview: "DSCF2355.jpg"
-summary: "I analyse Australian Hansard records using unsupervised machine learning."
+summary: "I analyse Australian Hansard records for 1901 to 2017 using unsupervised machine learning techniques."
 
 ---
 
 
 
-<p>I analyse Australian Hansard records using unsupervised machine learning. This project is actively in progress so the focus changes reasonably often. Please see GitHub or get in touch if you’d like to discuss.</p>
+<p>This project is actively in progress so the specifics change reasonably often. Please get in touch if you’d like to discuss.</p>
+<div id="overview" class="section level1">
+<h1>Overview</h1>
+<p>I look at what was said in Australia’s parliament between 1901 and 2017. Using natural language processing I attribute a topic to each Hansard statement. This creates a dataset of the topics discussed over time. I then associate topics with various economic and social factors. If a parliament in a liberal democracy is essentially just a ‘talk shop’ with little actual impact, then research should focus on other institutions. Or, if parliament plays an important role, then further analysis of how these decisions are made is needed. Either way, there are implications for our understanding of the institutions that directly control about a quarter of GDP and more broadly have a unique and extensive role in all aspects of life.</p>
+</div>
+<div id="data" class="section level1">
+<h1>Data</h1>
+<p>The Australian Parliament House makes each day’s Hansard available online a a PDF. I parsed these to PDFs to convert them to text-based CSV files. Numbers, punctuation and common but less-informative words (such as ‘Commonwealth’) were removed. and each word was stemmed, which allows, say, words and their plurals to be indistinct. Topic modelling requires counts of each word by the analysis unit, in this case, speaker-time.</p>
+</div>
+<div id="topic-modelling" class="section level1">
+<h1>Topic modelling</h1>
+<p>The latent Dirichlet allocation method (Blei, et al., 2003), as implemented by the stm R package (Roberts, et al., 2018), provides consistent estimates of the topics of each statement. The key assumption behind LDA is that each document is made by a speaker who decides the topics they would like to talk about in that document, and then chooses terms that are appropriate to those topics. A topic could be thought of as a collection of terms, and a document as a collection of topics. The topics are not specified ex ante; they are an outcome of the method. Terms are not necessarily unique to a particular topic, and a document could be about more than one topic. The Hansard words group themselves to define topics.</p>
+</div>
